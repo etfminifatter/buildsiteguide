@@ -22,3 +22,6 @@ d-----          2025/5/6     16:11                4_Cloudflare绑定域名并托
 
 
 1_注册域名（以spaceship举例）、2_创建github账号和仓库、3_cursor生成代码、4_Cloudflare绑定域名并托管
+
+
+step1、step2、step3、step4,页面的显示不能做改动，主要是修改html代码中图片地址的链接
