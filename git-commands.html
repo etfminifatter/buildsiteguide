@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Git命令大全 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .git-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .git-section {
+            margin-bottom: 40px;
+            border-bottom: 1px solid #eaeaea;
+            padding-bottom: 20px;
+        }
+        
+        .git-section:last-child {
+            border-bottom: none;
+        }
+        
+        .git-section h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 24px;
+        }
+        
+        .git-section h4 {
+            color: var(--gray-color);
+            margin: 25px 0 15px 0;
+            font-size: 20px;
+        }
+        
+        .code-block {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary-color);
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+            font-family: monospace;
+            white-space: pre-wrap;
+            overflow-x: auto;
+        }
+        
+        .command-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .command-table th {
+            background-color: #f0f7ff;
+            text-align: left;
+            padding: 12px 15px;
+            border-bottom: 2px solid var(--primary-color);
+        }
+        
+        .command-table td {
+            padding: 10px 15px;
+            border-bottom: 1px solid #eaeaea;
+        }
+        
+        .command-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        .command {
+            font-family: monospace;
+            background-color: #f0f7ff;
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .note strong {
+            color: #e65100;
+        }
+    </style>
+</head>
+<body>
+    <header class="step-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="back-link"><i class="fas fa-arrow-left"></i> 返回首页</a>
+            </nav>
+            <h1>Git命令大全</h1>
+            <p class="subtitle">常用Git命令清单与操作指南</p>
+        </div>
+    </header>
+
+    <section class="step-intro">
+        <div class="container">
+            <div class="intro-content">
+                <p>以下是常用的Git操作命令汇总，方便网站开发过程中快速查阅和使用。无论你是Git新手还是有经验的开发者，这份清单都能帮助你更高效地管理代码。</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="git-container">
+        <div class="git-section">
+            <h3>近期讨论的Git操作命令汇总</h3>
+            
+            <h4>1. 强制覆盖远端分支</h4>
+            <div class="code-block"># 将本地分支强制推送到远端（覆盖远端历史）
+git push origin &lt;本地分支名&gt;:&lt;远端分支名&gt; --force
+# 示例：用本地 master 覆盖远端 main
+git push origin master:main --force</div>
+            
+            <h4>2. 合并无关历史的分支</h4>
+            <div class="code-block"># 允许合并无共同历史的分支
+git merge &lt;分支名&gt; --allow-unrelated-histories
+# 示例：将 master 合并到 main
+git merge master --allow-unrelated-histories</div>
+            
+            <h4>3. 分支重命名与同步</h4>
+            <div class="code-block"># 重命名本地分支
+git branch -m &lt;旧分支名&gt; &lt;新分支名&gt;
+# 示例：将 master 重命名为 main
+git branch -m master main
+
+# 推送新分支并关联远端
+git push -u origin &lt;新分支名&gt;</div>
+            
+            <h4>4. 删除远端分支</h4>
+            <div class="code-block"># 删除远端分支
+git push origin --delete &lt;分支名&gt;
+# 示例：删除远端 dev 分支
+git push origin --delete dev</div>
+            
+            <h4>5. 解决冲突后继续合并</h4>
+            <div class="code-block"># 解决冲突后标记为已解决
+git add .
+git commit -m "解决冲突"</div>
+        </div>
+        
+        <div class="git-section">
+            <h3>常用Git命令大全</h3>
+            
+            <h4>基础操作</h4>
+            <table class="command-table">
+                <tr>
+                    <th>命令</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td><span class="command">git init</span></td>
+                    <td>初始化本地仓库</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git clone &lt;仓库URL&gt;</span></td>
+                    <td>克隆远程仓库</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git status</span></td>
+                    <td>查看当前仓库状态</td>
+                </tr>
+            </table>
+            
+            <h4>分支管理</h4>
+            <table class="command-table">
+                <tr>
+                    <th>命令</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td><span class="command">git branch</span></td>
+                    <td>查看本地分支</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git branch -a</span></td>
+                    <td>查看所有分支（本地+远程）</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git checkout &lt;分支名&gt;</span></td>
+                    <td>切换分支</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git checkout -b &lt;新分支名&gt;</span></td>
+                    <td>创建并切换分支</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git merge &lt;分支名&gt;</span></td>
+                    <td>合并分支</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git branch -d &lt;分支名&gt;</span></td>
+                    <td>删除本地分支</td>
+                </tr>
+            </table>
+            
+            <h4>提交与撤销</h4>
+            <table class="command-table">
+                <tr>
+                    <th>命令</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td><span class="command">git add &lt;文件名&gt;</span></td>
+                    <td>添加文件到暂存区</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git add .</span></td>
+                    <td>添加所有修改到暂存区</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git commit -m "提交信息"</span></td>
+                    <td>提交到本地仓库</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git reset --hard HEAD^</span></td>
+                    <td>撤销最后一次提交（危险！）</td>
+                </tr>
+            </table>
+            
+            <h4>远程仓库操作</h4>
+            <table class="command-table">
+                <tr>
+                    <th>命令</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td><span class="command">git remote -v</span></td>
+                    <td>查看远程仓库地址</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git pull origin &lt;分支名&gt;</span></td>
+                    <td>拉取远程分支更新</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git push origin &lt;分支名&gt;</span></td>
+                    <td>推送本地分支到远程</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git fetch --prune</span></td>
+                    <td>同步远程已删除的分支</td>
+                </tr>
+            </table>
+            
+            <h4>高级操作</h4>
+            <table class="command-table">
+                <tr>
+                    <th>命令</th>
+                    <th>说明</th>
+                </tr>
+                <tr>
+                    <td><span class="command">git log --oneline</span></td>
+                    <td>查看简洁版提交历史</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git stash</span></td>
+                    <td>临时保存未提交的修改</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git rebase &lt;分支名&gt;</span></td>
+                    <td>变基操作（谨慎使用）</td>
+                </tr>
+                <tr>
+                    <td><span class="command">git tag &lt;标签名&gt;</span></td>
+                    <td>打标签</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="git-section">
+            <h3>常用场景速查</h3>
+            
+            <h4>1. 首次推送本地仓库到远程</h4>
+            <div class="code-block">git remote add origin &lt;仓库URL&gt;
+git push -u origin main</div>
+            
+            <h4>2. 丢弃本地所有未提交修改</h4>
+            <div class="code-block">git reset --hard
+git clean -fd</div>
+            
+            <h4>3. 查看文件修改差异</h4>
+            <div class="code-block">git diff &lt;文件名&gt;</div>
+            
+            <h4>4. 回退到指定提交版本</h4>
+            <div class="code-block">git reset --hard &lt;commit-hash&gt;</div>
+        </div>
+        
+        <div class="git-section">
+            <h3>注意事项</h3>
+            <div class="note">
+                <p><strong>强制推送（--force）</strong>：会覆盖远程历史，确保你知道后果！</p>
+                <p><strong>合并冲突</strong>：手动解决后务必 <span class="command">git add</span> 和 <span class="command">git commit</span>。</p>
+                <p><strong>分支命名</strong>：现代项目推荐用 <span class="command">main</span> 替代 <span class="command">master</span>。</p>
+            </div>
+        </div>
+    </div>
+
+    <section class="step-navigation">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> 返回首页</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
