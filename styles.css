@@ -1,13 +1,13 @@
 /* 全局样式 */
 :root {
-    --primary-color: #0070f3;
-    --secondary-color: #0070f3;
+    --primary-color: #4285f4;
+    --secondary-color: #4e5968;
+    --success-color: #34a853;
+    --warning-color: #fbbc05;
+    --danger-color: #ea4335;
     --dark-color: #333;
     --light-color: #f4f4f4;
     --gray-color: #888;
-    --success-color: #28a745;
-    --warning-color: #ffc107;
-    --danger-color: #dc3545;
     --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
     --transition: all 0.3s ease;
 }
@@ -31,7 +31,7 @@ a {
 }
 
 .container {
-    max-width: 1200px;
+    max-width: 3200px;
     margin: 0 auto;
     padding: 0 20px;
 }
@@ -48,60 +48,139 @@ h1, h2, h3 {
     display: inline-block;
     background: var(--primary-color);
     color: white;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 50px;
     border: none;
     cursor: pointer;
-    transition: var(--transition);
+    transition: all 0.3s ease;
     font-weight: 500;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    position: relative;
+    overflow: hidden;
 }
 
 .btn:hover {
     transform: translateY(-3px);
-    box-shadow: var(--box-shadow);
-    opacity: 0.9;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    opacity: 0.95;
+}
+
+.btn:active {
+    transform: translateY(-1px);
+}
+
+.btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.5);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%, -50%);
+    transform-origin: 50% 50%;
+}
+
+.btn:hover::after {
+    animation: ripple 1s ease-out;
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
 }
 
 .btn-large {
-    padding: 15px 40px;
-    font-size: 18px;
+    padding: 12px 30px;
+    font-size: 16px;
+}
+
+.btn-secondary {
+    background: var(--secondary-color);
+    color: white;
+}
+
+.btn-secondary:hover {
+    background: #3c4654;
 }
 
 /* 头部样式 */
 header {
-    background: linear-gradient(120deg, #0070f3, #00a8ff);
+    background: linear-gradient(135deg, #4285f4, #34a853);
     color: white;
-    padding: 100px 0 70px;
+    padding: 120px 0 70px;
     text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none"/><path d="M0 0L100 100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/><path d="M100 0L0 100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+    opacity: 0.3;
 }
 
 header h1 {
     font-size: 48px;
     margin-bottom: 10px;
+    position: relative;
 }
 
 header .subtitle {
     font-size: 22px;
     opacity: 0.9;
+    margin-bottom: 30px;
 }
 
 /* 介绍部分 */
 .intro {
     text-align: center;
-    padding: 70px 0;
-    background-color: #f8f9fa;
+    padding: 35px 0;
+    background-color: #f0f5ff;
+    border-bottom: 1px solid #e1e8f5;
+    position: relative;
+}
+
+.intro::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: radial-gradient(#4285f4 1px, transparent 1px);
+    background-size: 20px 20px;
+    opacity: 0.1;
 }
 
 .intro h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
+    font-size: 30px;
+    margin-bottom: 15px;
+    color: var(--primary-color);
 }
 
 .intro p {
-    font-size: 18px;
-    max-width: 800px;
+    font-size: 16px;
+    max-width: 95%;
     margin: 0 auto;
-    color: var(--gray-color);
+    color: #4a5568;
+    line-height: 1.5;
 }
 
 /* 步骤部分 */
@@ -157,10 +236,24 @@ header .subtitle {
 
 /* CTA部分 */
 .cta {
-    background: linear-gradient(120deg, #0070f3, #00a8ff);
+    background: linear-gradient(135deg, #4285f4, #34a853);
     color: white;
     text-align: center;
-    padding: 70px 0;
+    padding: 60px 0;
+    position: relative;
+    overflow: hidden;
+    margin-top: 50px;
+}
+
+.cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect x="0" y="0" width="100" height="100" fill="none"/><path d="M0 0L100 100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/><path d="M100 0L0 100" stroke="rgba(255,255,255,0.05)" stroke-width="1"/></svg>');
+    opacity: 0.3;
 }
 
 .cta h2 {
@@ -177,7 +270,7 @@ header .subtitle {
 
 /* 页脚样式 */
 footer {
-    padding: 30px 0;
+    padding: 20px 0;
     text-align: center;
     background-color: #f8f9fa;
     border-top: 1px solid #eaeaea;
@@ -186,16 +279,396 @@ footer {
 footer a {
     color: var(--primary-color);
     font-weight: bold;
+    transition: var(--transition);
 }
 
 footer a:hover {
     text-decoration: underline;
+    color: #0051b3;
 }
 
-/* 响应式设计 */
-@media (max-width: 768px) {
+/* 主内容三列布局 */
+.main-content {
+    padding: 40px 0 60px;
+    background-color: #f9fafb;
+}
+
+.three-column-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 25px;
+    max-width: 95%;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+}
+
+.column::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary-color), rgba(66, 133, 244, 0.6));
+}
+
+.column h2 {
+    text-align: center;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    font-size: 24px;
+    position: relative;
+    padding-bottom: 10px;
+    font-weight: 700;
+}
+
+.column h2::after {
+    content: '';
+    position: absolute;
+    width: 45px;
+    height: 3px;
+    background: var(--primary-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 2px;
+}
+
+/* 左侧步骤样式 */
+.left-steps .step {
+    background: white;
+    border-radius: 10px;
+    box-shadow: var(--box-shadow);
+    overflow: hidden;
+    transition: var(--transition);
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    min-height: 280px;
+}
+
+.left-steps .step:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(66, 133, 244, 0.1);
+}
+
+.left-steps .step-number {
+    padding: 8px 0;
+    font-size: 20px;
+}
+
+.left-steps .step-content {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.left-steps h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.left-steps p {
+    font-size: 13px;
+    margin-bottom: 15px;
+    color: var(--gray-color);
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.left-steps .step-links {
+    margin-top: auto;
+}
+
+.left-steps .btn {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* 左侧步骤的2x2网格样式调整 */
+.left-steps .grid-2x2 .step {
+    margin-bottom: 0;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 中间基础学习的网格样式调整 */
+.center-basics .grid-2x2 .learning-card {
+    margin: 0;
+    height: 100%;
+}
+
+/* 右侧进阶升级的网格样式调整 */
+.right-advanced .grid-2x2 .advanced-card {
+    margin: 0;
+    height: 100%;
+}
+
+/* 基础学习卡片和进阶升级卡片 */
+.learning-card, .advanced-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: var(--box-shadow);
+    padding: 25px 18px;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    justify-content: space-between;
+    min-height: 230px;
+}
+
+.learning-card::before, .advanced-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #5a9eff);
+}
+
+.learning-card:hover, .advanced-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(66, 133, 244, 0.1);
+}
+
+.card-icon {
+    font-size: 28px;
+    color: var(--primary-color);
+    margin: 0 auto 15px;
+    background: rgba(66, 133, 244, 0.1);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    box-shadow: 0 3px 10px rgba(66, 133, 244, 0.2);
+    animation: float 4s ease-in-out infinite;
+}
+
+.learning-card:hover .card-icon, .advanced-card:hover .card-icon {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.1) rotate(5deg);
+}
+
+.learning-card h3, .advanced-card h3 {
+    font-size: 18px;
+    margin-bottom: 12px;
+    color: var(--dark-color);
+}
+
+.learning-card p, .advanced-card p {
+    margin-bottom: 18px;
+    color: var(--gray-color);
+    font-size: 14px;
+    line-height: 1.5;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
+    max-height: 120px;
+    overflow-y: auto;
+}
+
+.learning-card .btn, .advanced-card .btn {
+    margin-top: auto;
+    border-radius: 30px;
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+}
+
+/* 给中间的基础学习卡片和右侧的进阶升级卡片设置不同的颜色主题 */
+.center-basics .card-icon {
+    background: rgba(0, 112, 243, 0.1);
+    color: var(--primary-color);
+}
+
+.center-basics .learning-card::before {
+    background: linear-gradient(90deg, var(--primary-color), #5a9eff);
+}
+
+.center-basics .learning-card:hover .card-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.right-advanced .card-icon {
+    background: rgba(66, 133, 244, 0.1);
+    color: var(--primary-color);
+}
+
+.right-advanced .advanced-card::before {
+    background: linear-gradient(90deg, var(--primary-color), #5a9eff);
+}
+
+.right-advanced .advanced-card:hover .card-icon {
+    background: var(--primary-color);
+    color: white;
+}
+
+.right-advanced .btn {
+    background-color: var(--primary-color);
+}
+
+.right-advanced h2 {
+    color: var(--primary-color);
+}
+
+.right-advanced h2::after {
+    background: var(--primary-color);
+}
+
+/* 2x2网格布局 */
+.grid-2x2 {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-rows: repeat(2, auto);
+    gap: 15px;
+    width: 100%;
+    margin-bottom: 0;
+}
+
+/* 响应式设计调整 */
+@media (min-width: 1600px) {
+    .three-column-layout {
+        max-width: 80%;
+    }
+    
+    .grid-2x2 {
+        gap: 20px;
+    }
+    
+    .column h2 {
+        font-size: 24px;
+        margin-bottom: 22px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .three-column-layout {
+        max-width: 95%;
+    }
+    
+    .grid-2x2 {
+        aspect-ratio: 1.3 / 1;
+    }
+}
+
+@media (max-width: 1024px) {
+    .three-column-layout {
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        max-width: 95%;
+    }
+    
+    .column {
+        padding: 15px;
+    }
+    
+    .right-advanced {
+        grid-column: span 2;
+    }
+    
+    .right-advanced .grid-2x2 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, auto);
+        gap: 15px;
+    }
+    
+    .learning-card, .advanced-card, .left-steps .step {
+        min-height: 220px;
+    }
+    
+    .top-nav {
+        position: relative;
+        background-color: #4285f4;
+    }
+    
     header {
-        padding: 70px 0 50px;
+        padding: 80px 0 60px;
+    }
+}
+
+@media (max-width: 900px) {
+    .right-advanced .grid-2x2 {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 15px;
+    }
+    
+    .learning-card, .advanced-card, .left-steps .step {
+        min-height: 250px;
+    }
+}
+
+@media (max-width: 768px) {
+    .three-column-layout {
+        grid-template-columns: 1fr;
+        gap: 25px;
+        max-width: 95%;
+    }
+    
+    .right-advanced {
+        grid-column: auto;
+    }
+    
+    .main-content {
+        padding: 30px 0 50px;
+    }
+    
+    .column h2 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+    
+    .column {
+        padding: 15px;
+    }
+    
+    .grid-2x2 {
+        gap: 15px;
+    }
+    
+    .learning-card, .advanced-card, .left-steps .step {
+        min-height: 200px;
+    }
+    
+    .top-nav .nav-links {
+        display: none;
     }
     
     header h1 {
@@ -214,7 +687,234 @@ footer a:hover {
         font-size: 16px;
     }
     
-    .step-container {
-        grid-template-columns: 1fr;
+    .mobile-menu-btn {
+        display: block;
+        background: none;
+        border: none;
+        color: white;
+        font-size: 24px;
+        cursor: pointer;
     }
+}
+
+@media (max-width: 480px) {
+    .grid-2x2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 15px;
+    }
+    
+    .right-advanced .grid-2x2 {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(4, auto);
+    }
+    
+    .main-content {
+        padding: 25px 0 40px;
+    }
+    
+    .three-column-layout {
+        gap: 20px;
+        padding: 0 10px;
+    }
+    
+    .column {
+        padding: 15px 10px;
+    }
+    
+    .learning-card, .advanced-card, .left-steps .step {
+        min-height: 180px;
+    }
+    
+    .learning-card p, .advanced-card p, .left-steps p {
+        max-height: none;
+        font-size: 13px;
+    }
+}
+
+/* 添加顶部导航样式 */
+.top-nav {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 15px 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+}
+
+.top-nav .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.top-nav .logo {
+    color: white;
+    font-size: 22px;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+.top-nav .nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.top-nav .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.top-nav .nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+/* 修改滚动条样式使其更美观 */
+.learning-card p::-webkit-scrollbar,
+.advanced-card p::-webkit-scrollbar,
+.left-steps p::-webkit-scrollbar {
+    width: 4px;
+}
+
+.learning-card p::-webkit-scrollbar-track,
+.advanced-card p::-webkit-scrollbar-track,
+.left-steps p::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.learning-card p::-webkit-scrollbar-thumb,
+.advanced-card p::-webkit-scrollbar-thumb,
+.left-steps p::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 10px;
+}
+
+.learning-card p::-webkit-scrollbar-thumb:hover,
+.advanced-card p::-webkit-scrollbar-thumb:hover,
+.left-steps p::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
+}
+
+/* 添加动画效果 */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0px);
+    }
+}
+
+/* 移动端菜单按钮 */
+.mobile-menu-btn {
+    display: none;
+}
+
+/* 滚动导航样式 */
+.top-nav.scrolled {
+    background-color: #4285f4;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* 移动端菜单样式 */
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    z-index: 1000;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.mobile-menu.active {
+    transform: translateX(0);
+}
+
+.mobile-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #4285f4;
+    color: white;
+}
+
+.mobile-menu-header span {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.mobile-menu-close {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.mobile-menu-links {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.mobile-menu-links a {
+    color: #333;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 12px 15px;
+    border-radius: 8px;
+    transition: all 0.3s;
+}
+
+.mobile-menu-links a:hover {
+    background-color: #f0f5ff;
+    color: #4285f4;
+}
+
+/* 平滑滚动 */
+html {
+    scroll-behavior: smooth;
+}
+
+/* 交互式按钮样式 */
+.btn-large {
+    padding: 12px 30px;
+    font-size: 16px;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-large::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: -1;
+}
+
+.btn-large:hover::before {
+    transform: translateX(0);
 } 

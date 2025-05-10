@@ -8,67 +8,158 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="#deployment">网站部署</a>
+                <a href="#basics">基础学习</a>
+                <a href="#advanced">进阶提升</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
     <header>
         <div class="container">
             <h1>从零开始搭建网站</h1>
             <p class="subtitle">零基础用户的入门指南</p>
             <div style="margin-top: 15px;">
-                <a href="project-history.html" class="btn btn-secondary" style="margin-right: 10px;"><i class="fas fa-history"></i> 项目开发历史</a>
-                <a href="git-commands.html" class="btn btn-secondary"><i class="fab fa-github"></i> Git命令大全</a>
+                <a href="#" class="btn btn-large">立即开始</a>
+                <a href="project-history.html" class="btn btn-secondary" style="margin-left: 10px;"><i class="fas fa-history"></i> 项目开发历史</a>
             </div>
         </div>
     </header>
 
-    <section class="intro">
+    <section class="intro" id="intro">
         <div class="container">
-            <h2>无需编程经验，四步轻松拥有自己的网站</h2>
-            <p>按照本指南的步骤操作，即使是完全没有技术背景的你，也能轻松拥有一个属于自己的网站！</p>
+            <h2>如何部署</h2>
+            <p>本教程将帮助您零基础搭建专业网站，从域名购买到部署上线，一步步详细指导，无需任何编程经验！</p>
         </div>
     </section>
 
-    <section class="steps">
+    <section class="main-content">
         <div class="container">
-            <div class="step-container">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>注册域名（以Spaceship为例）</h3>
-                        <p>域名是您网站的门牌号，是用户访问您网站的地址。</p>
-                        <div class="step-links">
-                            <a href="step1.html" class="btn">查看详细步骤</a>
+            <div class="three-column-layout">
+                <!-- 左侧：四个步骤 -->
+                <div class="column left-steps" id="deployment">
+                    <h2>网站部署流程</h2>
+                    <div class="grid-2x2">
+                        <div class="step">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h3>注册域名（以Spaceship为例）</h3>
+                                <p>域名是您网站的门牌号，是用户访问您网站的地址。</p>
+                                <div class="step-links">
+                                    <a href="step1.html" class="btn">查看详细步骤</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h3>创建GitHub账号和仓库</h3>
+                                <p>GitHub是免费的代码托管平台，可以帮助您存储和管理网站代码。</p>
+                                <div class="step-links">
+                                    <a href="step2.html" class="btn">查看详细步骤</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h3>使用Cursor生成网站代码</h3>
+                                <p>借助Cursor编辑器的AI能力，轻松生成您的网站代码，无需编程知识。</p>
+                                <div class="step-links">
+                                    <a href="step3.html" class="btn">查看详细步骤</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="step">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h3>Cloudflare绑定域名并托管</h3>
+                                <p>通过Cloudflare将您的域名与网站连接起来，并享受免费的安全和加速服务。</p>
+                                <div class="step-links">
+                                    <a href="step4.html" class="btn">查看详细步骤</a>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>创建GitHub账号和仓库</h3>
-                        <p>GitHub是免费的代码托管平台，可以帮助您存储和管理网站代码。</p>
-                        <div class="step-links">
-                            <a href="step2.html" class="btn">查看详细步骤</a>
+                <!-- 中间：基础学习 -->
+                <div class="column center-basics" id="basics">
+                    <h2>基础学习</h2>
+                    <div class="grid-2x2">
+                        <div class="learning-card">
+                            <div class="card-icon"><i class="fas fa-code"></i></div>
+                            <h3>HTML基础</h3>
+                            <p>网页结构的基础知识，学习如何创建网页内容和元素布局。</p>
+                            <a href="#" class="btn">即将推出</a>
+                        </div>
+
+                        <div class="learning-card">
+                            <div class="card-icon"><i class="fas fa-paint-brush"></i></div>
+                            <h3>CSS样式</h3>
+                            <p>学习如何美化网页，添加样式、颜色和响应式布局。</p>
+                            <a href="#" class="btn">即将推出</a>
+                        </div>
+
+                        <div class="learning-card">
+                            <div class="card-icon"><i class="fas fa-cogs"></i></div>
+                            <h3>JavaScript基础</h3>
+                            <p>为网页添加交互功能，实现动态效果和用户交互。</p>
+                            <a href="#" class="btn">即将推出</a>
+                        </div>
+
+                        <div class="learning-card">
+                            <div class="card-icon"><i class="fas fa-mobile-alt"></i></div>
+                            <h3>响应式设计</h3>
+                            <p>让您的网站在手机、平板和电脑等各种设备上都能完美展示。</p>
+                            <a href="#" class="btn">即将推出</a>
                         </div>
                     </div>
                 </div>
 
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>使用Cursor生成网站代码</h3>
-                        <p>借助Cursor编辑器的AI能力，轻松生成您的网站代码，无需编程知识。</p>
-                        <div class="step-links">
-                            <a href="step3.html" class="btn">查看详细步骤</a>
+                <!-- 右侧：进阶升级 -->
+                <div class="column right-advanced" id="advanced">
+                    <h2>进阶升级</h2>
+                    <div class="grid-2x2">
+                        <div class="advanced-card">
+                            <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                            <h3>SEO优化</h3>
+                            <p>让您的网站在搜索引擎中获得更好的排名，吸引更多访问者。</p>
+                            <a href="#" class="btn">即将推出</a>
                         </div>
-                    </div>
-                </div>
 
-                <div class="step">
-                    <div class="step-number">4</div>
-                    <div class="step-content">
-                        <h3>Cloudflare绑定域名并托管</h3>
-                        <p>通过Cloudflare将您的域名与网站连接起来，并享受免费的安全和加速服务。</p>
-                        <div class="step-links">
-                            <a href="step4.html" class="btn">查看详细步骤</a>
+                        <div class="advanced-card">
+                            <div class="card-icon"><i class="fas fa-shopping-cart"></i></div>
+                            <h3>电子商务</h3>
+                            <p>为您的网站添加在线商店功能，开始您的电子商务之旅。</p>
+                            <a href="#" class="btn">即将推出</a>
+                        </div>
+
+                        <div class="advanced-card">
+                            <div class="card-icon"><i class="fas fa-database"></i></div>
+                            <h3>数据库集成</h3>
+                            <p>学习如何存储和管理网站数据，实现更强大的网站功能。</p>
+                            <a href="#" class="btn">即将推出</a>
+                        </div>
+
+                        <div class="advanced-card">
+                            <div class="card-icon"><i class="fas fa-shield-alt"></i></div>
+                            <h3>网站安全</h3>
+                            <p>保护您的网站不受黑客攻击和数据泄露，确保用户信息安全。</p>
+                            <a href="#" class="btn">即将推出</a>
                         </div>
                     </div>
                 </div>
@@ -90,6 +181,63 @@
         </div>
     </footer>
 
+    <!-- 添加移动端菜单 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>菜单</span>
+            <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="#deployment">网站部署</a>
+            <a href="#basics">基础学习</a>
+            <a href="#advanced">进阶提升</a>
+            <a href="project-history.html">项目历史</a>
+            <a href="git-commands.html">Git命令</a>
+        </div>
+    </div>
+
     <script src="script.js"></script>
+    
+    <!-- 添加移动端菜单功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if(mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // 点击菜单链接后关闭菜单
+                const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // 滚动时添加导航栏背景色
+            const topNav = document.querySelector('.top-nav');
+            if(topNav) {
+                window.addEventListener('scroll', function() {
+                    if(window.scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html> 
