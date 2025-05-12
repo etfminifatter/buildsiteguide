@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS样式 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="index.html#deployment">网站部署</a>
+                <a href="index.html#basics">基础学习</a>
+                <a href="index.html#advanced">进阶提升</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="step-header">
+        <div class="container">
+            <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> 返回首页</a>
+            <h1>CSS样式</h1>
+            <p class="subtitle">学习如何美化网页，添加样式、颜色和响应式布局</p>
+        </div>
+    </header>
+
+    <section class="step-content">
+        <div class="container">
+            <div class="resource-section">
+                <h2>推荐学习资源</h2>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-globe"></i></div>
+                    <div class="resource-content">
+                        <h3>The Odin Project</h3>
+                        <p>提供从基础到进阶的CSS学习资源，通过实践项目帮助你逐步掌握CSS的各种技巧。</p>
+                        <p class="resource-note">网站为全英文，但可以使用沉浸式翻译插件辅助学习。</p>
+                        <a href="https://www.theodinproject.com" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-book"></i></div>
+                    <div class="resource-content">
+                        <h3>Josh W Comeau的CSS博客</h3>
+                        <p>Josh W Comeau是一位优秀的前端开发者，他的博客提供了大量关于CSS的高质量教程和技巧。特别适合想要深入学习CSS的读者。</p>
+                        <a href="https://www.joshwcomeau.com" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-code"></i></div>
+                    <div class="resource-content">
+                        <h3>MDN CSS文档</h3>
+                        <p>Mozilla开发者网络(MDN)提供的CSS文档是学习CSS最全面的资源之一，从基础到高级内容一应俱全。</p>
+                        <p class="resource-note">提供中文版本，对中文读者非常友好。</p>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="learning-path">
+                <h2>CSS学习路径</h2>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="path-step-number">1</div>
+                        <div class="path-step-content">
+                            <h3>CSS基础语法</h3>
+                            <p>了解CSS选择器、属性和值的基本语法。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">2</div>
+                        <div class="path-step-content">
+                            <h3>盒模型与布局</h3>
+                            <p>学习CSS盒模型、定位、Flexbox和Grid布局。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">3</div>
+                        <div class="path-step-content">
+                            <h3>响应式设计</h3>
+                            <p>掌握媒体查询和响应式设计原则，适配不同设备。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">4</div>
+                        <div class="path-step-content">
+                            <h3>CSS变换与动画</h3>
+                            <p>学习使用CSS创建变换效果和动画。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">5</div>
+                        <div class="path-step-content">
+                            <h3>CSS预处理器</h3>
+                            <p>了解Sass、Less等CSS预处理器的基本使用。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-section">
+                <h2>CSS学习小贴士</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="tip-content">
+                            <h3>多看实例代码</h3>
+                            <p>通过分析优秀网站的CSS代码，可以学习到很多实用技巧。可以使用浏览器开发工具查看其他网站的CSS实现。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-code"></i></div>
+                        <div class="tip-content">
+                            <h3>实践项目</h3>
+                            <p>通过实际项目练习CSS，比如复制一个你喜欢的网站界面，或者设计自己的作品集网站。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="tip-content">
+                            <h3>移动优先</h3>
+                            <p>现代CSS开发推荐采用"移动优先"的方法，先为小屏幕设备设计，再逐步扩展到大屏幕。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h2>接下来学习什么？</h2>
+                <p>掌握CSS基础后，建议继续学习JavaScript来为网页添加交互功能。</p>
+                <div class="next-buttons">
+                    <a href="javascript-basics.html" class="btn btn-large">学习JavaScript基础 <i class="fas fa-arrow-right"></i></a>
+                    <a href="index.html" class="btn btn-secondary">返回首页 <i class="fas fa-home"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <!-- 添加移动端菜单 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>菜单</span>
+            <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html#deployment">网站部署</a>
+            <a href="index.html#basics">基础学习</a>
+            <a href="index.html#advanced">进阶提升</a>
+            <a href="project-history.html">项目历史</a>
+            <a href="git-commands.html">Git命令</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- 添加移动端菜单功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if(mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // 点击菜单链接后关闭菜单
+                const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // 滚动时添加导航栏背景色
+            const topNav = document.querySelector('.top-nav');
+            if(topNav) {
+                window.addEventListener('scroll', function() {
+                    if(window.scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 

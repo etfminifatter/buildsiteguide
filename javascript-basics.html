@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript基础 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="index.html#deployment">网站部署</a>
+                <a href="index.html#basics">基础学习</a>
+                <a href="index.html#advanced">进阶提升</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="step-header">
+        <div class="container">
+            <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> 返回首页</a>
+            <h1>JavaScript基础</h1>
+            <p class="subtitle">为网页添加交互功能，实现动态效果和用户交互</p>
+        </div>
+    </header>
+
+    <section class="step-content">
+        <div class="container">
+            <div class="resource-section">
+                <h2>推荐学习资源</h2>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-globe"></i></div>
+                    <div class="resource-content">
+                        <h3>The Odin Project</h3>
+                        <p>通过实际项目学习JavaScript，帮助你从基础逐步进阶到更复杂的JavaScript应用开发。</p>
+                        <p class="resource-note">网站为全英文，但可以使用沉浸式翻译插件辅助学习。</p>
+                        <a href="https://www.theodinproject.com" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-book"></i></div>
+                    <div class="resource-content">
+                        <h3>MDN JavaScript指南</h3>
+                        <p>Mozilla开发者网络(MDN)提供的JavaScript指南是最全面的JavaScript学习资源之一，包含从基础到高级的所有内容。</p>
+                        <p class="resource-note">提供中文版本，对中文读者非常友好。</p>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-file-alt"></i></div>
+                    <div class="resource-content">
+                        <h3>学习编程入门指南</h3>
+                        <p>一篇全面的如何学习编程的文章，包含JavaScript学习的相关建议。</p>
+                        <a href="https://cvyjzhfm73.feishu.cn/docx/Ov6sdAIKPoHQAhxC083crnKRn1T" target="_blank" class="btn btn-resource">查看文章 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="learning-path">
+                <h2>JavaScript学习路径</h2>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="path-step-number">1</div>
+                        <div class="path-step-content">
+                            <h3>JavaScript基础语法</h3>
+                            <p>学习变量、数据类型、运算符和基本语句。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">2</div>
+                        <div class="path-step-content">
+                            <h3>函数与对象</h3>
+                            <p>了解函数定义、调用、作用域和对象操作。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">3</div>
+                        <div class="path-step-content">
+                            <h3>DOM操作</h3>
+                            <p>学习如何使用JavaScript操作HTML文档结构。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">4</div>
+                        <div class="path-step-content">
+                            <h3>事件处理</h3>
+                            <p>了解如何响应用户操作和页面事件。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">5</div>
+                        <div class="path-step-content">
+                            <h3>异步编程</h3>
+                            <p>学习回调函数、Promise和async/await。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-section">
+                <h2>JavaScript学习小贴士</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-lightbulb"></i></div>
+                        <div class="tip-content">
+                            <h3>从简单开始</h3>
+                            <p>先掌握基础概念，然后逐步学习更复杂的内容。不要一开始就尝试学习复杂的框架。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-code"></i></div>
+                        <div class="tip-content">
+                            <h3>动手实践</h3>
+                            <p>JavaScript是一门需要实践的语言，尝试创建小项目，比如简单的计算器、待办事项列表等。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-bug"></i></div>
+                        <div class="tip-content">
+                            <h3>学会调试</h3>
+                            <p>学习使用浏览器的开发者工具进行调试，这将极大提高你的开发效率。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h2>接下来学习什么？</h2>
+                <p>掌握JavaScript基础后，建议学习响应式设计，让你的网站在各种设备上都能完美展示。</p>
+                <div class="next-buttons">
+                    <a href="responsive-design.html" class="btn btn-large">学习响应式设计 <i class="fas fa-arrow-right"></i></a>
+                    <a href="index.html" class="btn btn-secondary">返回首页 <i class="fas fa-home"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <!-- 添加移动端菜单 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>菜单</span>
+            <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html#deployment">网站部署</a>
+            <a href="index.html#basics">基础学习</a>
+            <a href="index.html#advanced">进阶提升</a>
+            <a href="project-history.html">项目历史</a>
+            <a href="git-commands.html">Git命令</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- 添加移动端菜单功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if(mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // 点击菜单链接后关闭菜单
+                const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // 滚动时添加导航栏背景色
+            const topNav = document.querySelector('.top-nav');
+            if(topNav) {
+                window.addEventListener('scroll', function() {
+                    if(window.scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

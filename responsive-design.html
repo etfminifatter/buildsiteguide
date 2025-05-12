@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式设计 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="index.html#deployment">网站部署</a>
+                <a href="index.html#basics">基础学习</a>
+                <a href="index.html#advanced">进阶提升</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <header class="step-header">
+        <div class="container">
+            <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> 返回首页</a>
+            <h1>响应式设计</h1>
+            <p class="subtitle">让您的网站在手机、平板和电脑等各种设备上都能完美展示</p>
+        </div>
+    </header>
+
+    <section class="step-content">
+        <div class="container">
+            <div class="resource-section">
+                <h2>推荐学习资源</h2>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-globe"></i></div>
+                    <div class="resource-content">
+                        <h3>The Odin Project</h3>
+                        <p>提供完整的响应式设计学习路径，通过实践项目帮助你掌握响应式设计的各种技巧。</p>
+                        <p class="resource-note">网站为全英文，但可以使用沉浸式翻译插件辅助学习。</p>
+                        <a href="https://www.theodinproject.com" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-book"></i></div>
+                    <div class="resource-content">
+                        <h3>MDN响应式设计指南</h3>
+                        <p>Mozilla开发者网络(MDN)提供的响应式设计指南，涵盖了从媒体查询到Flexbox、Grid等现代布局技术。</p>
+                        <p class="resource-note">提供中文版本，对中文读者非常友好。</p>
+                        <a href="https://developer.mozilla.org/zh-CN/docs/Learn/CSS/CSS_layout/Responsive_Design" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+                
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-laptop-code"></i></div>
+                    <div class="resource-content">
+                        <h3>Josh W Comeau的CSS博客</h3>
+                        <p>提供了许多有关响应式设计的高级技巧和实践案例，对提升设计技能非常有帮助。</p>
+                        <a href="https://www.joshwcomeau.com" target="_blank" class="btn btn-resource">访问网站 <i class="fas fa-external-link-alt"></i></a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="learning-path">
+                <h2>响应式设计学习路径</h2>
+                <div class="path-steps">
+                    <div class="path-step">
+                        <div class="path-step-number">1</div>
+                        <div class="path-step-content">
+                            <h3>响应式设计原则</h3>
+                            <p>了解流式布局、相对单位和媒体查询的基本概念。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">2</div>
+                        <div class="path-step-content">
+                            <h3>媒体查询</h3>
+                            <p>学习如何使用媒体查询为不同屏幕尺寸适配样式。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">3</div>
+                        <div class="path-step-content">
+                            <h3>Flexbox布局</h3>
+                            <p>掌握Flexbox布局技术，实现灵活的一维布局。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">4</div>
+                        <div class="path-step-content">
+                            <h3>Grid布局</h3>
+                            <p>学习CSS Grid布局，实现强大的二维布局系统。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="path-step">
+                        <div class="path-step-number">5</div>
+                        <div class="path-step-content">
+                            <h3>响应式图像</h3>
+                            <p>了解如何使用现代技术处理响应式图像，优化各设备显示。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="tips-section">
+                <h2>响应式设计小贴士</h2>
+                <div class="tips-container">
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-mobile-alt"></i></div>
+                        <div class="tip-content">
+                            <h3>移动优先</h3>
+                            <p>采用"移动优先"的设计方法，先为小屏幕设备设计，再逐步扩展到大屏幕。这样可以确保在各种设备上都有良好的用户体验。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-text-height"></i></div>
+                        <div class="tip-content">
+                            <h3>使用相对单位</h3>
+                            <p>使用相对单位（如em、rem、vw和vh）而不是固定像素值，使布局能够随屏幕大小自动调整。</p>
+                        </div>
+                    </div>
+                    
+                    <div class="tip-card">
+                        <div class="tip-icon"><i class="fas fa-desktop"></i></div>
+                        <div class="tip-content">
+                            <h3>测试多种设备</h3>
+                            <p>在开发过程中，使用浏览器的开发者工具模拟不同设备，并在实际设备上进行测试，确保网站在各种环境中都表现良好。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="next-steps">
+                <h2>完成基础学习</h2>
+                <p>恭喜！您已经完成了前端开发的基础学习内容。接下来可以探索更多进阶主题，或者回到首页查看其他内容。</p>
+                <div class="next-buttons">
+                    <a href="index.html" class="btn btn-large">返回首页 <i class="fas fa-home"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <!-- 添加移动端菜单 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>菜单</span>
+            <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html#deployment">网站部署</a>
+            <a href="index.html#basics">基础学习</a>
+            <a href="index.html#advanced">进阶提升</a>
+            <a href="project-history.html">项目历史</a>
+            <a href="git-commands.html">Git命令</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- 添加移动端菜单功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if(mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // 点击菜单链接后关闭菜单
+                const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // 滚动时添加导航栏背景色
+            const topNav = document.querySelector('.top-nav');
+            if(topNav) {
+                window.addEventListener('scroll', function() {
+                    if(window.scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html> 
