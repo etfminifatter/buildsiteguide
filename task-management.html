@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>项目任务管理 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .task-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .principles-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .principles-section h2 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+                 .principle-formula {
+             background: rgba(255, 255, 255, 0.1);
+             padding: 20px;
+             border-radius: 10px;
+             margin: 20px 0;
+             border-left: 4px solid #fff;
+             font-size: 1.1em;
+             text-align: left;
+         }
+        
+        .principle-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .principle-list li {
+            background: rgba(255, 255, 255, 0.1);
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffd700;
+        }
+        
+        .task-section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .task-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+        
+        .task-item {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 15px;
+            border-left: 4px solid #ddd;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .task-item:hover {
+            background: #f0f7ff;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .task-item.completed {
+            border-left-color: #28a745;
+            background: #e8f5e8;
+        }
+        
+        .task-item.in-progress {
+            border-left-color: #ffc107;
+            background: #fff8e1;
+        }
+        
+        .task-item.not-started {
+            border-left-color: #6c757d;
+        }
+        
+        
+        
+        .task-content {
+            font-size: 14px;
+            line-height: 1.4;
+            color: #333;
+        }
+        
+        .task-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .task-status.completed {
+            background: #28a745;
+        }
+        
+        .task-status.in-progress {
+            background: #ffc107;
+        }
+        
+        .task-status.not-started {
+            background: #6c757d;
+        }
+        
+        
+        
+        .task-status::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            background: white;
+            border-radius: 50%;
+        }
+        
+        .task-status.completed::after {
+            content: '✓';
+            background: none;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .progress-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #ddd;
+        }
+        
+        .stat-card.completed-stat {
+            border-top-color: #28a745;
+        }
+        
+        .stat-card.progress-stat {
+            border-top-color: #ffc107;
+        }
+        
+        .stat-card.pending-stat {
+            border-top-color: #6c757d;
+        }
+        
+        
+        
+        .stat-number {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+        
+        .stat-label {
+            color: #666;
+            font-size: 14px;
+            margin-top: 5px;
+        }
+        
+        .income-levels {
+            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .income-levels h3 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .income-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin: 10px 0;
+            border-left: 4px solid #ffd700;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .income-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateX(5px);
+        }
+        
+        .income-item.achieved {
+            border-left-color: #00ff88;
+            background: rgba(0, 255, 136, 0.2);
+        }
+        
+        .filter-buttons {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 8px 16px;
+            background: #f8f9fa;
+            border: 2px solid #e9ecef;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 14px;
+        }
+        
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-color);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .task-container {
+                padding: 15px;
+            }
+            
+            .task-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .progress-stats {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .filter-buttons {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="step-header">
+        <div class="container">
+            <nav>
+                <a href="index.html" class="back-to-home"><i class="fas fa-arrow-left"></i> 返回首页</a>
+            </nav>
+            <h1><i class="fas fa-tasks"></i> 项目任务管理</h1>
+            <p class="subtitle">网站搭建与盈利路径规划</p>
+        </div>
+    </header>
+
+    <section class="step-intro">
+        <div class="container">
+            <div class="intro-content">
+                <p>基于实战经验制定的网站开发任务清单，从技术实现到商业变现的完整路径规划。</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="task-container">
+        <!-- 需求分析原则 -->
+        <div class="principles-section">
+            <h2><i class="fas fa-lightbulb"></i> 需求分析原则（刘小排）</h2>
+            <div class="principle-formula">
+                旧需求 + 新技术 + 软柿子 + 玩转规则的脑洞 = AI产品蓝海机会
+            </div>
+            <ul class="principle-list">
+                <li><strong>概率思维</strong> - 解决数量问题，用概率提升成功率</li>
+                <li><strong>需求倒做</strong> - 先有需求，再做产品，避免闭门造车</li>
+                <li><strong>顺应优势</strong> - 卡在自己的优势区间去打别人</li>
+                <li><strong>顺应趋势</strong> - 顺应时代的趋势，技术的趋势</li>
+            </ul>
+        </div>
+
+        <!-- 进度统计 -->
+        <div class="progress-stats">
+            <div class="stat-card completed-stat">
+                <div class="stat-number" id="completed-count">0</div>
+                <div class="stat-label">已完成</div>
+            </div>
+            <div class="stat-card progress-stat">
+                <div class="stat-number" id="progress-count">0</div>
+                <div class="stat-label">进行中</div>
+            </div>
+            <div class="stat-card pending-stat">
+                <div class="stat-number" id="pending-count">0</div>
+                <div class="stat-label">待开始</div>
+            </div>
+            
+        </div>
+
+        <!-- 筛选按钮 -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="all">全部</button>
+            <button class="filter-btn" data-filter="completed">已完成</button>
+            <button class="filter-btn" data-filter="in-progress">进行中</button>
+            <button class="filter-btn" data-filter="not-started">待开始</button>
+            
+        </div>
+
+        <!-- 网站功能任务 -->
+        <div class="task-section">
+                         <h3 class="section-title">
+                 <i class="fas fa-globe"></i>
+                 网站功能开发清单（参考哥飞的截图）
+             </h3>
+            <div class="task-grid">
+                <div class="task-item completed" data-category="basic">
+                    <div class="task-status completed" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">注册域名</div>
+                </div>
+                
+                <div class="task-item completed" data-category="deployment">
+                    <div class="task-status completed" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">会部署在Cloudflare</div>
+                </div>
+                
+                <div class="task-item in-progress" data-category="deployment">
+                    <div class="task-status in-progress" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">会在Vercel上部署项目</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="feature">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">多语言支持</div>
+                </div>
+                
+                <div class="task-item in-progress" data-category="design">
+                    <div class="task-status in-progress" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">自己优化模板，或者买模板</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="auth">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">网站有谷歌登录</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="monetization">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">网站接入Adsense</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="payment">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">网站接入支付</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="integration">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">会接入API</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="integration">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">会接入iframe</div>
+                </div>
+                
+                                 <div class="task-item not-started" data-category="seo">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">会做SEO优化</div>
+                 </div>
+                
+                <div class="task-item not-started" data-category="analytics">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">知道怎么在GSC看数据</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="analytics">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">会分析GSC的数据</div>
+                </div>
+                
+                                 <div class="task-item not-started" data-category="traffic">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">从谷歌获取超过100个点击</div>
+                 </div>
+                 
+                 <div class="task-item not-started" data-category="traffic">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">从谷歌获取超过10万个点击</div>
+                 </div>
+                
+                <div class="task-item not-started" data-category="seo">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">至少发布了一个外链</div>
+                </div>
+                
+                                 <div class="task-item not-started" data-category="seo">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">知道怎么尽可能给自己网站加外链，且知道在哪里加，且能执行到位</div>
+                 </div>
+                 
+                 <div class="task-item not-started" data-category="content">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">知道需要不断上内页</div>
+                 </div>
+                 
+                 <div class="task-item not-started" data-category="content">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">能写出可以得到排名曝光的页面文案</div>
+                 </div>
+                
+                <div class="task-item not-started" data-category="advertising">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">尝试过Ads广告</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="advertising">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">在Ads广告中花费1000美元</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 可能遇到的问题 -->
+        <div class="task-section">
+            <h3 class="section-title">
+                <i class="fas fa-exclamation-triangle"></i>
+                可能遇到的问题
+            </h3>
+            <div class="task-grid">
+                                 <div class="task-item not-started" data-category="risk">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">流量变成零 - 需要备用方案</div>
+                 </div>
+                 
+                 <div class="task-item not-started" data-category="risk">
+                     <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                     <div class="task-content">网站没了 - 需要备份和恢复方案</div>
+                 </div>
+                
+                <div class="task-item not-started" data-category="risk">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">API不可用 - 需要备用API</div>
+                </div>
+                
+                <div class="task-item not-started" data-category="risk">
+                    <div class="task-status not-started" onclick="toggleStatus(this)"></div>
+                    <div class="task-content">支付问题 - 需要多种支付方式</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 赚钱等级 -->
+        <div class="income-levels">
+            <h3><i class="fas fa-dollar-sign"></i> 最终赚钱等级目标</h3>
+            <div class="income-item" onclick="toggleIncomeStatus(this)">
+                赚到第1美元 💰
+            </div>
+            <div class="income-item" onclick="toggleIncomeStatus(this)">
+                日收入超过100美元 📈
+            </div>
+            <div class="income-item" onclick="toggleIncomeStatus(this)">
+                月收入超过5000美元 🚀
+            </div>
+            <div class="income-item" onclick="toggleIncomeStatus(this)">
+                月收入超过10000美元 💎
+            </div>
+            <div class="income-item" onclick="toggleIncomeStatus(this)">
+                可以靠自己做网站带来稳定的收入，不再需要上班 🏆
+            </div>
+        </div>
+    </div>
+
+    <section class="step-navigation">
+        <div class="container">
+            <div class="nav-buttons">
+                <a href="index.html" class="btn btn-secondary"><i class="fas fa-home"></i> 返回首页</a>
+                <a href="project-history.html" class="btn btn-primary"><i class="fas fa-history"></i> 项目历史</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <script>
+                 // 切换任务状态
+         function toggleStatus(element) {
+             const classes = ['not-started', 'in-progress', 'completed'];
+             const currentClass = classes.find(cls => element.classList.contains(cls));
+             const currentIndex = classes.indexOf(currentClass);
+             const nextIndex = (currentIndex + 1) % classes.length;
+             
+             // 移除当前状态
+             element.classList.remove(currentClass);
+             element.parentElement.classList.remove(currentClass);
+             
+             // 添加新状态
+             element.classList.add(classes[nextIndex]);
+             element.parentElement.classList.add(classes[nextIndex]);
+             
+             // 更新统计
+             updateStats();
+             
+             // 保存状态到本地存储
+             saveTaskStates();
+         }
+        
+        // 切换收入目标状态
+        function toggleIncomeStatus(element) {
+            element.classList.toggle('achieved');
+            saveTaskStates();
+        }
+        
+                 // 更新统计数据
+         function updateStats() {
+             const completed = document.querySelectorAll('.task-item.completed').length;
+             const inProgress = document.querySelectorAll('.task-item.in-progress').length;
+             const notStarted = document.querySelectorAll('.task-item.not-started').length;
+             
+             document.getElementById('completed-count').textContent = completed;
+             document.getElementById('progress-count').textContent = inProgress;
+             document.getElementById('pending-count').textContent = notStarted;
+         }
+        
+        // 筛选功能
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                // 移除所有active状态
+                document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+                // 添加当前按钮active状态
+                this.classList.add('active');
+                
+                const filter = this.dataset.filter;
+                const tasks = document.querySelectorAll('.task-item');
+                
+                tasks.forEach(task => {
+                    if (filter === 'all' || task.classList.contains(filter)) {
+                        task.style.display = 'block';
+                    } else {
+                        task.style.display = 'none';
+                    }
+                });
+            });
+        });
+        
+                 // 保存任务状态到本地存储
+         function saveTaskStates() {
+             const taskStates = {};
+             document.querySelectorAll('.task-item').forEach((task, index) => {
+                 const status = ['not-started', 'in-progress', 'completed']
+                     .find(cls => task.classList.contains(cls));
+                 taskStates[index] = status;
+             });
+             
+             const incomeStates = {};
+             document.querySelectorAll('.income-item').forEach((item, index) => {
+                 incomeStates[index] = item.classList.contains('achieved');
+             });
+             
+             localStorage.setItem('taskStates', JSON.stringify(taskStates));
+             localStorage.setItem('incomeStates', JSON.stringify(incomeStates));
+         }
+        
+                 // 从本地存储加载任务状态
+         function loadTaskStates() {
+             const taskStates = JSON.parse(localStorage.getItem('taskStates') || '{}');
+             const incomeStates = JSON.parse(localStorage.getItem('incomeStates') || '{}');
+             
+             document.querySelectorAll('.task-item').forEach((task, index) => {
+                 if (taskStates[index]) {
+                     // 移除所有状态类
+                     ['not-started', 'in-progress', 'completed'].forEach(cls => {
+                         task.classList.remove(cls);
+                         task.querySelector('.task-status').classList.remove(cls);
+                     });
+                     
+                     // 添加保存的状态
+                     task.classList.add(taskStates[index]);
+                     task.querySelector('.task-status').classList.add(taskStates[index]);
+                 }
+             });
+             
+             document.querySelectorAll('.income-item').forEach((item, index) => {
+                 if (incomeStates[index]) {
+                     item.classList.add('achieved');
+                 }
+             });
+             
+             updateStats();
+         }
+        
+        // 页面加载时初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            loadTaskStates();
+            updateStats();
+        });
+    </script>
+</body>
+</html>
