@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>问题本质评级系统 - 需求分析方法论</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .problem-category {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .rating-stars {
+            font-size: 20px;
+            margin: 10px 0;
+        }
+        
+        .breadcrumb {
+            padding: 20px 0;
+            background: #f8f9fa;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        
+        .success-case {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .analysis-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .analysis-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">首页</a> / 
+            <a href="requirement-analysis.html">需求分析方法论</a> / 
+            <span>问题本质评级系统</span>
+        </div>
+    </div>
+
+    <header style="background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); padding: 60px 0; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="margin-bottom: 15px;"><i class="fas fa-search-plus"></i> 问题本质评级系统</h1>
+            <p style="font-size: 1.2em; opacity: 0.9;">10类问题本质的深度分析和商业价值评级</p>
+        </div>
+    </header>
+
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <!-- 系统说明 -->
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 40px;">
+                <h2 style="color: var(--primary-color); margin-bottom: 20px;">🔍 评级系统说明</h2>
+                <div class="analysis-grid">
+                    <div class="analysis-item">
+                        <h4 style="color: #333; margin-bottom: 10px;">评级维度</h4>
+                        <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                            <li>市场规模潜力</li>
+                            <li>技术实现难度</li>
+                            <li>商业模式清晰度</li>
+                            <li>用户付费意愿</li>
+                        </ul>
+                    </div>
+                    <div class="analysis-item">
+                        <h4 style="color: #333; margin-bottom: 10px;">星级含义</h4>
+                        <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                            <li>⭐️⭐️⭐️⭐️⭐️ 极高商业价值</li>
+                            <li>⭐️⭐️⭐️⭐️ 高商业价值</li>
+                            <li>⭐️⭐️⭐️ 中等商业价值</li>
+                            <li>⭐️⭐️ 低商业价值</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 10类问题本质分析 -->
+            <div>
+                <!-- 1. 获取信息 -->
+                <div class="problem-category">
+                    <h3 style="color: #e74c3c; margin-bottom: 15px;">
+                        <i class="fas fa-info-circle"></i> 1. 获取信息
+                    </h3>
+                    <div class="rating-stars">商业价值评级：⭐️⭐️⭐️⭐️</div>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        <strong>问题本质：</strong>用户需要快速、准确地获取特定信息来支持决策或满足好奇心
+                    </p>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">典型场景</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>查询天气、股价、汇率</li>
+                                <li>搜索产品评价、使用教程</li>
+                                <li>获取行业报告、数据分析</li>
+                            </ul>
+                        </div>
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">商业机会</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>垂直搜索引擎</li>
+                                <li>专业数据服务</li>
+                                <li>AI问答系统</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="success-case">
+                        <h5 style="color: #333; margin-bottom: 10px;">💼 成功案例</h5>
+                        <p style="color: var(--gray-color); margin: 0;">
+                            Google（通用搜索）、Bloomberg（金融数据）、知乎（知识问答）、ChatGPT（AI助手）
+                        </p>
+                    </div>
+                </div>
+
+                <!-- 2. 节省时间 -->
+                <div class="problem-category">
+                    <h3 style="color: #27ae60; margin-bottom: 15px;">
+                        <i class="fas fa-clock"></i> 2. 节省时间
+                    </h3>
+                    <div class="rating-stars">商业价值评级：⭐️⭐️⭐️⭐️⭐️</div>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        <strong>问题本质：</strong>通过自动化、优化流程或提供快捷方式来减少用户完成任务的时间
+                    </p>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">典型场景</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>自动化重复性工作</li>
+                                <li>快速处理文档、图片</li>
+                                <li>一键完成复杂操作</li>
+                            </ul>
+                        </div>
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">商业机会</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>RPA自动化工具</li>
+                                <li>效率提升软件</li>
+                                <li>批处理工具</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="success-case">
+                        <h5 style="color: #333; margin-bottom: 10px;">💼 成功案例</h5>
+                        <p style="color: var(--gray-color); margin: 0;">
+                            Zapier（自动化）、Notion（效率工具）、Photoshop批处理、Excel宏功能
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- 3. 省钱 -->
+                <div class="problem-category">
+                    <h3 style="color: #f39c12; margin-bottom: 15px;">
+                        <i class="fas fa-piggy-bank"></i> 3. 省钱
+                    </h3>
+                    <div class="rating-stars">商业价值评级：⭐️⭐️⭐️⭐️</div>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        <strong>问题本质：</strong>帮助用户以更低成本获得同等价值，或找到性价比更高的替代方案
+                    </p>
+                    
+                    <div class="analysis-grid">
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">典型场景</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>比价购物、优惠券</li>
+                                <li>免费替代付费服务</li>
+                                <li>成本优化建议</li>
+                            </ul>
+                        </div>
+                        <div class="analysis-item">
+                            <h5 style="color: #333; margin-bottom: 10px;">商业机会</h5>
+                            <ul style="color: var(--gray-color); margin: 0; padding-left: 20px;">
+                                <li>比价平台</li>
+                                <li>优惠聚合器</li>
+                                <li>成本管理工具</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="success-case">
+                        <h5 style="color: #333; margin-bottom: 10px;">💼 成功案例</h5>
+                        <p style="color: var(--gray-color); margin: 0;">
+                            淘宝比价、Honey插件、什么值得买、返利网
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 相关工具 -->
+            <div style="margin-top: 40px; text-align: center;">
+                <h4 style="color: var(--primary-color); margin-bottom: 20px;">🔧 相关分析工具</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                    <a href="user-analysis-matrix.html" class="btn" style="background: #667eea; color: white; text-decoration: none; padding: 15px; border-radius: 8px;">用户分析矩阵工具</a>
+                    <a href="business-value-assessment.html" class="btn" style="background: #74b9ff; color: white; text-decoration: none; padding: 15px; border-radius: 8px;">商业价值评估指南</a>
+                    <a href="requirement-analysis.html" class="btn" style="background: var(--primary-color); color: white; text-decoration: none; padding: 15px; border-radius: 8px;">返回总览</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html> 

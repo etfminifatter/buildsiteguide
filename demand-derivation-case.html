@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>需求推导的黄金路径 - 思维炼金术实战案例</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .hero-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero-section p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .breadcrumb {
+            background: #f8f9fa;
+            padding: 15px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .breadcrumb-list {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: #6c757d;
+        }
+        
+        .breadcrumb-list a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .breadcrumb-list a:hover {
+            text-decoration: underline;
+        }
+        
+        .case-section {
+            padding: 60px 0;
+            background: #f8f9fa;
+        }
+        
+        .case-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+            border-left: 4px solid #fd79a8;
+        }
+        
+        .case-card h2 {
+            color: #333;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .case-card h3 {
+            color: #555;
+            margin: 25px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e9ecef;
+        }
+        
+        .method-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .method-table th {
+            background: linear-gradient(135deg, #fd79a8, #e84393);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .method-table td {
+            padding: 15px;
+            border-bottom: 1px solid #e9ecef;
+            vertical-align: top;
+        }
+        
+        .method-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .phase-indicator {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+        }
+        
+        .code-block .comment {
+            color: #718096;
+        }
+        
+        .code-block .keyword {
+            color: #f093fb;
+        }
+        
+        .code-block .string {
+            color: #68d391;
+        }
+        
+        .formula-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+            border-left: 4px solid #e17055;
+            text-align: center;
+        }
+        
+        .formula-box .formula {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #2d3436;
+            font-family: 'Times New Roman', serif;
+        }
+        
+        .derivation-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .step-card {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border-top: 3px solid #fd79a8;
+            position: relative;
+        }
+        
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: #fd79a8;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .step-card h4 {
+            margin-top: 10px;
+            color: #2d3436;
+        }
+        
+        .example-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .example-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .example-card h5 {
+            color: #00b894;
+            margin-bottom: 10px;
+        }
+        
+        .navigation-links {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-top: 40px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.07);
+        }
+        
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .nav-card {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+            text-decoration: none;
+            color: #2d3436;
+        }
+        
+        .nav-card:hover {
+            transform: translateY(-5px);
+            text-decoration: none;
+            color: #2d3436;
+        }
+        
+        .nav-card i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2rem;
+            }
+            
+            .case-card {
+                padding: 20px;
+            }
+            
+            .method-table {
+                font-size: 14px;
+            }
+            
+            .method-table th,
+            .method-table td {
+                padding: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 顶部导航 -->
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="index.html#deployment">网站部署</a>
+                <a href="index.html#basics">基础学习</a>
+                <a href="index.html#advanced">进阶提升</a>
+                <a href="requirement-analysis.html">需求分析</a>
+                <a href="task-management.html">任务管理</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb">
+        <div class="container">
+            <div class="breadcrumb-list">
+                <a href="index.html"><i class="fas fa-home"></i> 首页</a>
+                <span>></span>
+                <a href="requirement-analysis.html">需求分析方法论</a>
+                <span>></span>
+                <span>思维炼金术实战案例</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 英雄区域 -->
+    <section class="hero-section">
+        <div class="container">
+            <h1><i class="fas fa-lightbulb"></i> 需求推导的黄金路径</h1>
+            <p>从文石高亮单一需求出发，通过思维炼金术三阶抽象法，演示如何在1小时内衍生出300+有效需求的完整推导过程</p>
+            <div style="margin-top: 25px;">
+                <a href="#case-analysis" class="btn btn-large" style="background: rgba(255,255,255,0.2); border: 2px solid white;">
+                    <i class="fas fa-search"></i> 案例解构
+                </a>
+                <a href="#derivation-method" class="btn btn-large" style="background: rgba(255,255,255,0.2); border: 2px solid white; margin-left: 15px;">
+                    <i class="fas fa-cogs"></i> 推导方法
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心案例内容 -->
+    <section class="case-section" id="case-analysis">
+        <div class="container">
+            <!-- 具体到抽象：需求解构三阶法 -->
+            <div class="case-card">
+                <h2><i class="fas fa-microscope"></i> 具体到抽象：需求解构三阶法</h2>
+                
+                <h3>原始需求陈述</h3>
+                <div style="background: linear-gradient(135deg, #e8f4f8, #d1ecf1); padding: 25px; border-radius: 10px; margin: 20px 0; border-left: 4px solid #3498db;">
+                    <div style="display: flex; align-items: center; margin-bottom: 15px;">
+                        <i class="fas fa-quote-left" style="font-size: 1.5em; color: #3498db; margin-right: 10px;"></i>
+                        <h4 style="color: #2c3e50; margin: 0;">用户原始描述</h4>
+                    </div>
+                    <p style="color: #34495e; font-size: 1.1em; line-height: 1.6; margin-bottom: 15px; font-style: italic;">
+                        "平常在文石上看书会highlight一些值得收藏的内容，想知道有没有什么办法可以把选中的文字都快速收集到obsidian的一个笔记里？或者退一步，收集到文石的同一个笔记里，再或者收集在某个app里然后能导入到obsidian里？"
+                    </p>
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 15px; border-radius: 6px;">
+                        <p style="color: #2c3e50; margin: 0; font-size: 0.95em;">
+                            <strong>📍 需求类型：</strong>工具流转效率问题 &nbsp;&nbsp;
+                            <strong>🎯 核心诉求：</strong>跨平台内容聚合 &nbsp;&nbsp;
+                            <strong>⚡ 痛点强度：</strong>中高频刚需
+                        </p>
+                    </div>
+                </div>
+                
+                <h3>1. 个案解剖（文石高亮案例）</h3>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 3px solid #fd79a8;">
+                    <p style="margin: 0; color: #495057;">
+                        <strong>分析思路：</strong>从上述原始需求出发，我们不急于寻找现成工具，而是先深入分析用户的完整行为链路和潜在痛点，这样才能找到问题的本质规律。
+                    </p>
+                </div>
+                
+                <div class="phase-indicator">阶段一：行为流分析</div>
+                <p><strong>用户行为链：</strong>阅读 → 划线 → 摘录 → 整理 → 应用</p>
+                
+                <div class="phase-indicator">阶段二：痛点识别</div>
+                <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 15px 0;">
+                    <p><strong>痛点链路：</strong></p>
+                    <div style="text-align: center; margin: 20px 0;">
+                        <span style="background: #e74c3c; color: white; padding: 8px 15px; border-radius: 20px; margin: 5px;">操作繁琐</span>
+                        <span style="margin: 0 10px;">→</span>
+                        <span style="background: #f39c12; color: white; padding: 8px 15px; border-radius: 20px; margin: 5px;">信息孤岛</span>
+                        <span style="margin: 0 10px;">→</span>
+                        <span style="background: #9b59b6; color: white; padding: 8px 15px; border-radius: 20px; margin: 5px;">知识休眠</span>
+                    </div>
+                </div>
+
+                <h3>2. 模式提取（5大抽象维度）</h3>
+                <table class="method-table">
+                    <thead>
+                        <tr>
+                            <th>维度</th>
+                            <th>文石案例</th>
+                            <th>抽象表达</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>跨媒介</strong></td>
+                            <td>电纸书→Markdown</td>
+                            <td>异构系统数据迁移</td>
+                        </tr>
+                        <tr>
+                            <td><strong>认知负荷</strong></td>
+                            <td>多次复制粘贴</td>
+                            <td>人机交互熵增</td>
+                        </tr>
+                        <tr>
+                            <td><strong>价值衰减</strong></td>
+                            <td>高亮未被再利用</td>
+                            <td>信息价值半衰期</td>
+                        </tr>
+                        <tr>
+                            <td><strong>元数据丢失</strong></td>
+                            <td>书籍/页码信息缺失</td>
+                            <td>上下文语境剥离</td>
+                        </tr>
+                        <tr>
+                            <td><strong>流程断裂</strong></td>
+                            <td>阅读与写作分离</td>
+                            <td>生产链路断层</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3. 数学建模</h3>
+                <div class="formula-box">
+                    <div class="formula">η = (有效重组次数) / (原始捕获成本)</div>
+                    <p style="margin-top: 10px; color: #636e72;">当前案例效率：η ≈ 0.2（5次操作利用1次）</p>
+                </div>
+            </div>
+
+            <!-- 抽象到具体：需求矩阵生成术 -->
+            <div class="case-card" id="derivation-method">
+                <h2><i class="fas fa-cogs"></i> 抽象到具体：需求矩阵生成术</h2>
+
+                <h3>1. 需求坐标体系</h3>
+                <div class="code-block">
+<span class="keyword">class</span> <span class="string">DemandMatrix</span>:
+    <span class="keyword">def</span> __init__(self):
+        self.axes = {
+            <span class="string">'媒介类型'</span>: [<span class="string">'纸质'</span>,<span class="string">'电子'</span>,<span class="string">'语音'</span>,<span class="string">'视频'</span>],
+            <span class="string">'操作类型'</span>: [<span class="string">'标记'</span>,<span class="string">'剪辑'</span>,<span class="string">'批注'</span>,<span class="string">'分享'</span>],
+            <span class="string">'应用场景'</span>: [<span class="string">'学习'</span>,<span class="string">'创作'</span>,<span class="string">'研究'</span>,<span class="string">'社交'</span>]
+        }
+
+    <span class="keyword">def</span> generate_cases(self):
+        <span class="keyword">for</span> media <span class="keyword">in</span> self.axes[<span class="string">'媒介类型'</span>]:
+            <span class="keyword">for</span> action <span class="keyword">in</span> self.axes[<span class="string">'操作类型'</span>]:
+                <span class="keyword">for</span> scene <span class="keyword">in</span> self.axes[<span class="string">'应用场景'</span>]:
+                    <span class="keyword">yield</span> f<span class="string">"{media}媒介的{action}在{scene}场景的流转问题"</span>
+</div>
+
+                <h3>2. 百倍需求衍生</h3>
+                <table class="method-table">
+                    <thead>
+                        <tr>
+                            <th>抽象维度</th>
+                            <th>衍生需求案例</th>
+                            <th>技术实现方案</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>跨媒介</td>
+                            <td>微信语音→会议纪要</td>
+                            <td>语音识别+AI摘要</td>
+                        </tr>
+                        <tr>
+                            <td>认知负荷</td>
+                            <td>视频关键帧自动打标</td>
+                            <td>计算机视觉+时间戳标记</td>
+                        </tr>
+                        <tr>
+                            <td>价值衰减</td>
+                            <td>旧笔记智能唤醒</td>
+                            <td>知识图谱+主动推荐</td>
+                        </tr>
+                        <tr>
+                            <td>元数据丢失</td>
+                            <td>网页收藏夹上下文保存</td>
+                            <td>浏览器插件抓取DOM树</td>
+                        </tr>
+                        <tr>
+                            <td>流程断裂</td>
+                            <td>灵感捕捉→PPT自动生成</td>
+                            <td>OCR+大语言模型</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3. 验证过滤器</h3>
+                <div class="code-block">
+<span class="comment">// 需求有效性验证函数</span>
+<span class="keyword">fn</span> is_valid_demand(demand: &Demand) -> <span class="keyword">bool</span> {
+    demand.pain_level >= <span class="string">7</span> &&
+    demand.frequency >= <span class="string">Weekly</span> &&
+    existing_solutions.is_unsatisfied()
+}
+</div>
+            </div>
+
+            <!-- 实战推演 -->
+            <div class="case-card">
+                <h2><i class="fas fa-rocket"></i> 实战推演：从文石案例到百个需求</h2>
+
+                <div class="derivation-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <h4>第一层推导（同媒介类需求）</h4>
+                        <p>电子书高亮 → PDF批注导出 → 网页划线收集 → 视频片段标记</p>
+                        <p><strong>技术共性：</strong>内容片段+元数据提取</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <h4>第二层推导（同痛点的跨领域）</h4>
+                        <p>知识管理断点 → 健身数据孤岛 → 家庭财务分散记录</p>
+                        <p><strong>本质需求：</strong>碎片信息结构化归集</p>
+                    </div>
+                    
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <h4>第三层推导（反向场景）</h4>
+                        <p>阅读输入痛点 → 写作输出痛点 → 创作素材难检索</p>
+                        <p><strong>系统洞察：</strong>知识生命周期管理</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 黄金推导模板 -->
+            <div class="case-card">
+                <h2><i class="fas fa-gem"></i> 黄金推导模板</h2>
+
+                <h3>1. 抽象问题陈述</h3>
+                <div class="formula-box">
+                    <div class="formula">"如何实现[操作行为]在[环境A]与[环境B]间的[价值属性]保持的迁移？"</div>
+                </div>
+
+                <h3>2. 填充案例库</h3>
+                <table class="method-table">
+                    <thead>
+                        <tr>
+                            <th>操作行为</th>
+                            <th>环境A</th>
+                            <th>环境B</th>
+                            <th>价值属性</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>高亮</td>
+                            <td>文石电纸书</td>
+                            <td>Obsidian</td>
+                            <td>上下文完整性</td>
+                        </tr>
+                        <tr>
+                            <td>剪辑</td>
+                            <td>Premiere</td>
+                            <td>团队Wiki</td>
+                            <td>版本一致性</td>
+                        </tr>
+                        <tr>
+                            <td>标注</td>
+                            <td>医学影像</td>
+                            <td>电子病历</td>
+                            <td>诊断关联性</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>3. 模式复用公式</h3>
+                <div class="formula-box">
+                    <div class="formula">新需求 = 已知需求案例 × 维度替换系数 + 场景特化参数</div>
+                </div>
+            </div>
+
+            <!-- 效率倍增工具 -->
+            <div class="case-card">
+                <h2><i class="fas fa-tools"></i> 效率倍增工具</h2>
+
+                <h3>1. 需求联想器（AI提示词）</h3>
+                <div class="code-block">
+请作为需求挖掘专家，基于以下核心模式：
+[用户]在[场景A]的[行为]难以无缝迁移到[场景B]
+
+生成20个具体需求案例，确保覆盖：
+- 3个生产力工具场景
+- 2个医疗健康场景  
+- 1个工业制造场景
+</div>
+
+                <h3>2. 可行性速查表</h3>
+                <table class="method-table">
+                    <thead>
+                        <tr>
+                            <th>检查项</th>
+                            <th>文石案例</th>
+                            <th>新需求候选</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>用户痛苦是否可视化</td>
+                            <td>✓</td>
+                            <td>待评估</td>
+                        </tr>
+                        <tr>
+                            <td>现有方案是否低效</td>
+                            <td>✓</td>
+                            <td>待评估</td>
+                        </tr>
+                        <tr>
+                            <td>技术组件是否可获得</td>
+                            <td>✓</td>
+                            <td>待评估</td>
+                        </tr>
+                        <tr>
+                            <td>商业价值是否可量化</td>
+                            <td>✓</td>
+                            <td>待评估</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 认知升级路线 -->
+            <div class="case-card">
+                <h2><i class="fas fa-graduation-cap"></i> 认知升级路线</h2>
+
+                <div class="example-grid">
+                    <div class="example-card">
+                        <h5>新手阶段：线性类推</h5>
+                        <p>"文石高亮问题 → Kindle高亮问题"</p>
+                        <p><strong>特征：</strong>一对一的简单映射</p>
+                    </div>
+
+                    <div class="example-card">
+                        <h5>进阶阶段：维度替换</h5>
+                        <p>媒介维度：文字→音频→视频<br>
+                        行为维度：标记→剪辑→分享</p>
+                        <p><strong>特征：</strong>系统性的维度展开</p>
+                    </div>
+
+                    <div class="example-card">
+                        <h5>大师阶段：模式移植</h5>
+                        <p>将"知识管理断点"模式移植到：<br>
+                        • 物联网设备数据孤岛<br>
+                        • 跨链加密货币交易</p>
+                        <p><strong>特征：</strong>抽象模式的跨领域应用</p>
+                    </div>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #ffeaa7, #fab1a0); padding: 20px; border-radius: 8px; margin: 20px 0;">
+                    <h4 style="color: #2d3436; margin-bottom: 15px;"><i class="fas fa-star"></i> 核心价值</h4>
+                    <p style="color: #2d3436; margin-bottom: 10px;">
+                        这种思维训练能使你在<strong>1小时内从1个案例衍生出300+有效需求</strong>，关键在于建立"问题模式"的神经索引，而非记忆具体解法。
+                    </p>
+                    <p style="color: #2d3436;">
+                        建议用费曼技巧向他人讲解这个推导过程，直到能用三个层级解释任意新需求。
+                    </p>
+                </div>
+            </div>
+
+            <!-- 相关工具链接 -->
+            <div class="navigation-links">
+                <h2><i class="fas fa-link"></i> 相关分析工具</h2>
+                <div class="nav-grid">
+                    <a href="user-analysis-matrix.html" class="nav-card">
+                        <i class="fas fa-table"></i>
+                        <h4>用户分析矩阵</h4>
+                        <p>48种需求组合工具</p>
+                    </a>
+                    
+                    <a href="problem-essence-analysis.html" class="nav-card">
+                        <i class="fas fa-microscope"></i>
+                        <h4>问题本质分析</h4>
+                        <p>10类问题评级系统</p>
+                    </a>
+                    
+                    <a href="business-value-assessment.html" class="nav-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>商业价值评估</h4>
+                        <p>价值评估指南</p>
+                    </a>
+                    
+                    <a href="deep-analysis-theory.html" class="nav-card">
+                        <i class="fas fa-brain"></i>
+                        <h4>理论框架解析</h4>
+                        <p>科学理论基础</p>
+                    </a>
+                    
+                    <a href="requirement-analysis.html" class="nav-card">
+                        <i class="fas fa-home"></i>
+                        <h4>方法论总览</h4>
+                        <p>返回首页</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <!-- 添加移动端菜单 -->
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span>菜单</span>
+            <button class="mobile-menu-close"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="mobile-menu-links">
+            <a href="index.html#deployment">网站部署</a>
+            <a href="index.html#basics">基础学习</a>
+            <a href="index.html#advanced">进阶提升</a>
+            <a href="requirement-analysis.html">需求分析</a>
+            <a href="task-management.html">任务管理</a>
+            <a href="project-history.html">项目历史</a>
+            <a href="git-commands.html">Git命令</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    
+    <!-- 添加移动端菜单功能 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const mobileMenuClose = document.querySelector('.mobile-menu-close');
+            const mobileMenu = document.querySelector('.mobile-menu');
+            
+            if(mobileMenuBtn && mobileMenu && mobileMenuClose) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+                
+                mobileMenuClose.addEventListener('click', function() {
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                });
+                
+                // 点击菜单链接后关闭菜单
+                const mobileLinks = document.querySelectorAll('.mobile-menu-links a');
+                mobileLinks.forEach(link => {
+                    link.addEventListener('click', function() {
+                        mobileMenu.classList.remove('active');
+                        document.body.style.overflow = '';
+                    });
+                });
+            }
+            
+            // 滚动时添加导航栏背景色
+            const topNav = document.querySelector('.top-nav');
+            if(topNav) {
+                window.addEventListener('scroll', function() {
+                    if(window.scrollY > 50) {
+                        topNav.classList.add('scrolled');
+                    } else {
+                        topNav.classList.remove('scrolled');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>

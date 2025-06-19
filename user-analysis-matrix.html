@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户分析矩阵工具 - 需求分析方法论</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        
+        .matrix-table th,
+        .matrix-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+        
+        .matrix-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .matrix-table tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .matrix-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .stars {
+            font-size: 16px;
+            color: #ffd700;
+        }
+        
+        .matrix-category {
+            margin-bottom: 40px;
+        }
+        
+        .breadcrumb {
+            padding: 20px 0;
+            background: #f8f9fa;
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb">
+        <div class="container">
+            <a href="index.html">首页</a> / 
+            <a href="requirement-analysis.html">需求分析方法论</a> / 
+            <span>用户分析矩阵工具</span>
+        </div>
+    </div>
+
+    <header style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 60px 0; text-align: center; color: white;">
+        <div class="container">
+            <h1 style="margin-bottom: 15px;"><i class="fas fa-table"></i> 用户分析矩阵工具</h1>
+            <p style="font-size: 1.2em; opacity: 0.9;">48种需求组合完整矩阵 - 6核心目标 × 8种约束条件</p>
+        </div>
+    </header>
+
+    <section style="padding: 60px 0;">
+        <div class="container">
+            <!-- 工具说明 -->
+            <div style="background: #f8f9fa; padding: 30px; border-radius: 15px; margin-bottom: 40px;">
+                <h2 style="color: var(--primary-color); margin-bottom: 20px;">🎯 如何使用这个工具</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 10px;">第1步：定位用户目标</h4>
+                        <p style="color: var(--gray-color);">根据用户行为识别其核心目标类型（任务完成、探索学习、社交认同等）</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 10px;">第2步：分析约束条件</h4>
+                        <p style="color: var(--gray-color);">评估用户的技术能力、时间压力、预算状况等约束因素</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 10px;">第3步：查找对应矩阵</h4>
+                        <p style="color: var(--gray-color);">在对应目标类型的矩阵中找到匹配的约束条件组合</p>
+                    </div>
+                    <div>
+                        <h4 style="color: #333; margin-bottom: 10px;">第4步：确定解决方案</h4>
+                        <p style="color: var(--gray-color);">参考价值等级和典型工具需求，设计针对性解决方案</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6个核心目标的详细矩阵 -->
+            <div style="display: grid; gap: 40px;">
+                <!-- 1. 任务完成型 -->
+                <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: var(--primary-color); margin-bottom: 20px; border-bottom: 2px solid var(--primary-color); padding-bottom: 10px;">
+                        <i class="fas fa-tasks"></i> 1. 任务完成型（快速达成结果）
+                    </h3>
+                    <div class="value-matrix">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>技术能力</th>
+                                    <th>时间压力</th>
+                                    <th>预算</th>
+                                    <th>需求场景示例</th>
+                                    <th>价值等级</th>
+                                    <th>典型工具需求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>企业IT紧急部署标准化文件夹</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                    <td>批量文件操作企业版</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>开发者临时整理开源项目目录</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>开源命令行工具</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>设计师定期整理素材库</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>Adobe Bridge插件</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>学生管理论文资料</td>
+                                    <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                    <td>免费文件管理工具</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>行政人员快速归档会议资料</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                    <td>拖拽式文件夹生成器</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>临时工整理照片到手机相册</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>手机端简易整理APP</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>小店主建立商品分类目录</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>轻量级进销存软件</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>老年人整理家庭照片</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>系统自带文件夹管理</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 2. 探索学习型 -->
+                <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #e74c3c; margin-bottom: 20px; border-bottom: 2px solid #e74c3c; padding-bottom: 10px;">
+                        <i class="fas fa-graduation-cap"></i> 2. 探索学习型（掌握技能）
+                    </h3>
+                    <div class="value-matrix">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>技术能力</th>
+                                    <th>时间压力</th>
+                                    <th>预算</th>
+                                    <th>需求场景示例</th>
+                                    <th>价值等级</th>
+                                    <th>典型工具需求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>程序员突击学习新语言项目结构</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>交互式IDE模板库</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>学生通宵赶作业需规范目录</td>
+                                    <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                    <td>GitHub学生模板包</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>数据科学家构建实验目录体系</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>Jupyter Notebook扩展</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>极客自学Linux文件系统</td>
+                                    <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                    <td>终端命令手册</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>转行者快速搭建作品集目录</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>作品集生成平台</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>临时需整理学习资料</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>网盘自动分类功能</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>职场新人建立知识管理体系</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>Notion模板订阅</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>兴趣爱好者整理教程资源</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>浏览器书签管理器</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 3. 社交认同型 -->
+                <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                    <h3 style="color: #9b59b6; margin-bottom: 20px; border-bottom: 2px solid #9b59b6; padding-bottom: 10px;">
+                        <i class="fas fa-users"></i> 3. 社交认同型（获得他人认可）
+                    </h3>
+                    <div class="value-matrix">
+                        <table class="matrix-table">
+                            <thead>
+                                <tr>
+                                    <th>技术能力</th>
+                                    <th>时间压力</th>
+                                    <th>预算</th>
+                                    <th>需求场景示例</th>
+                                    <th>价值等级</th>
+                                    <th>典型工具需求</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>KOL紧急制作品牌合作内容</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                    <td>专业设计工具+品牌素材库</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>学生突击优化求职作品集</td>
+                                    <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                    <td>免费作品集模板平台</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>设计师维护个人品牌网站</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>定制化Portfolio工具</td>
+                                </tr>
+                                <tr>
+                                    <td>高</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>开发者展示GitHub项目</td>
+                                    <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                    <td>GitHub Pages自动生成器</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>有预算</td>
+                                    <td>销售快速制作客户案例库</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>拖拽式案例展示工具</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>紧急</td>
+                                    <td>无预算</td>
+                                    <td>临时需要发朋友圈精美图片</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>手机端一键修图APP</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>有预算</td>
+                                    <td>小店主打造网红店铺形象</td>
+                                    <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                    <td>电商装修模板订阅服务</td>
+                                </tr>
+                                <tr>
+                                    <td>低</td>
+                                    <td>长期</td>
+                                    <td>无预算</td>
+                                    <td>业余爱好者分享手工作品</td>
+                                    <td><span class="stars">⭐️⭐️</span></td>
+                                    <td>社交媒体自带编辑工具</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                 <!-- 4. 风险规避型 -->
+                 <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                     <h3 style="color: #f39c12; margin-bottom: 20px; border-bottom: 2px solid #f39c12; padding-bottom: 10px;">
+                         <i class="fas fa-shield-alt"></i> 4. 风险规避型（避免损失/错误）
+                     </h3>
+                     <div class="value-matrix">
+                         <table class="matrix-table">
+                             <thead>
+                                 <tr>
+                                     <th>技术能力</th>
+                                     <th>时间压力</th>
+                                     <th>预算</th>
+                                     <th>需求场景示例</th>
+                                     <th>价值等级</th>
+                                     <th>典型工具需求</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>企业数据库紧急备份</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                     <td>自动化容灾备份系统</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>开发者防止代码误删</td>
+                                     <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                     <td>Git版本控制工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>金融机构合规文件归档</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                     <td>审计级文档管理系统</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>隐私意识用户加密聊天</td>
+                                     <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                     <td>Signal/Telegram</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>家长紧急屏蔽不良网站</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>付费家长控制软件</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>临时需保护手机照片隐私</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>系统自带相册加密功能</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>小微企业财务数据安全</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>云端会计软件+双重认证</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>老年人防止误点诈骗链接</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>浏览器安全插件免费版</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+
+                 <!-- 5. 效率极致型 -->
+                 <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                     <h3 style="color: #27ae60; margin-bottom: 20px; border-bottom: 2px solid #27ae60; padding-bottom: 10px;">
+                         <i class="fas fa-tachometer-alt"></i> 5. 效率极致型（优化投入产出）
+                     </h3>
+                     <div class="value-matrix">
+                         <table class="matrix-table">
+                             <thead>
+                                 <tr>
+                                     <th>技术能力</th>
+                                     <th>时间压力</th>
+                                     <th>预算</th>
+                                     <th>需求场景示例</th>
+                                     <th>价值等级</th>
+                                     <th>典型工具需求</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>电商大促期间批量处理订单</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                     <td>自动化RPA工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>开发者快速部署测试环境</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>Docker一键脚本库</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>数据分析师优化工作流</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️⭐️</span></td>
+                                     <td>Jupyter Notebook自动化插件</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>程序员管理多个开源项目</td>
+                                     <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                     <td>免费多仓库管理工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>行政人员批量处理文档</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>公文批量生成工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>临时工快速汇总日报</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>微信接龙表格工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>自由职业者管理客户项目</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>全平台任务管理软件</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>学生整理学习笔记</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>Markdown笔记APP免费版</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+
+                 <!-- 6. 情感满足型 -->
+                 <div class="matrix-category" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 5px 15px rgba(0,0,0,0.1);">
+                     <h3 style="color: #e91e63; margin-bottom: 20px; border-bottom: 2px solid #e91e63; padding-bottom: 10px;">
+                         <i class="fas fa-heart"></i> 6. 情感满足型（缓解焦虑/获得愉悦）
+                     </h3>
+                     <div class="value-matrix">
+                         <table class="matrix-table">
+                             <thead>
+                                 <tr>
+                                     <th>技术能力</th>
+                                     <th>时间压力</th>
+                                     <th>预算</th>
+                                     <th>需求场景示例</th>
+                                     <th>价值等级</th>
+                                     <th>典型工具需求</th>
+                                 </tr>
+                             </thead>
+                             <tbody>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>高压工作者急需放松</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>付费冥想APP（Headspace）</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>失眠者临时寻找白噪音</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>免费自然声音网站</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>发烧友定制智能家居灯光</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>HomeKit自动化配置工具</td>
+                                 </tr>
+                                 <tr>
+                                     <td>高</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>极客DIY个性化电脑桌面</td>
+                                     <td><span class="stars">⭐️⭐️</span></td>
+                                     <td>Rainmeter皮肤社区</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>有预算</td>
+                                     <td>心情低落时快速获得鼓励</td>
+                                     <td><span class="stars">⭐️⭐️⭐️</span></td>
+                                     <td>AI心理聊天机器人</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>紧急</td>
+                                     <td>无预算</td>
+                                     <td>临时需要背景音乐</td>
+                                     <td><span class="stars">⭐️</span></td>
+                                     <td>免费音乐播放器</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>有预算</td>
+                                     <td>长期焦虑用户日常情绪管理</td>
+                                     <td><span class="stars">⭐️⭐️⭐️⭐️</span></td>
+                                     <td>订阅制心理健康APP</td>
+                                 </tr>
+                                 <tr>
+                                     <td>低</td>
+                                     <td>长期</td>
+                                     <td>无预算</td>
+                                     <td>老年人消磨时间</td>
+                                     <td><span class="stars">⭐️</span></td>
+                                     <td>手机预装小游戏</td>
+                                 </tr>
+                             </tbody>
+                         </table>
+                     </div>
+                 </div>
+             </div>
+             
+             <!-- 应用总结 -->
+             <div style="text-align: center; margin-top: 40px; padding: 30px; background: rgba(52, 152, 219, 0.1); border-radius: 15px;">
+                 <h4 style="color: var(--primary-color); margin-bottom: 15px;">📊 完整矩阵分析总结</h4>
+                 <p style="color: var(--gray-color); margin-bottom: 10px;">
+                     以上完整展示了<strong>6种核心目标 × 8种约束条件组合</strong>的48种需求分析矩阵
+                 </p>
+                 <p style="color: var(--gray-color);">
+                     每种组合都有明确的价值评级（⭐️-⭐️⭐️⭐️⭐️⭐️）、典型场景和解决方案，为产品开发提供精准的决策依据
+                 </p>
+             </div>
+
+             <!-- 相关工具 -->
+             <div style="margin-top: 40px; text-align: center;">
+                 <h4 style="color: var(--primary-color); margin-bottom: 20px;">🔧 相关分析工具</h4>
+                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px;">
+                     <a href="problem-essence-analysis.html" class="btn" style="background: #ff9a9e; color: white; text-decoration: none; padding: 15px; border-radius: 8px;">问题本质评级系统</a>
+                     <a href="business-value-assessment.html" class="btn" style="background: #74b9ff; color: white; text-decoration: none; padding: 15px; border-radius: 8px;">商业价值评估指南</a>
+                     <a href="requirement-analysis.html" class="btn" style="background: var(--primary-color); color: white; text-decoration: none; padding: 15px; border-radius: 8px;">返回总览</a>
+                 </div>
+             </div>
+         </div>
+     </section>
+
+     <script src="script.js"></script>
+</body>
+</html> 

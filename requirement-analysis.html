@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>需求分析方法论 - 从零开始搭建网站</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="step-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .methodology-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 0;
+            text-align: center;
+        }
+        
+        .methodology-hero h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .methodology-hero p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .framework-overview {
+            padding: 60px 0;
+            background-color: #f8f9fa;
+        }
+        
+        .framework-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .framework-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-left: 5px solid var(--primary-color);
+        }
+        
+        .framework-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .framework-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .matrix-section {
+            padding: 60px 0;
+        }
+        
+        .matrix-intro {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .matrix-intro h2 {
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+        
+        .dimension-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .dimension-card {
+            background: linear-gradient(145deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 12px;
+            padding: 25px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .dimension-icon {
+            font-size: 2.5em;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+        
+        .value-matrix {
+            overflow-x: auto;
+            margin: 40px 0;
+        }
+        
+        .matrix-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .matrix-table th {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .matrix-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .matrix-table tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        .stars {
+            font-size: 1.2em;
+            color: #ffd700;
+        }
+        
+        .problem-essence {
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
+            padding: 60px 0;
+            color: white;
+        }
+        
+        .problem-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .problem-card {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        
+        .problem-card h4 {
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+        
+        .commercial-value {
+            padding: 60px 0;
+            background: white;
+        }
+        
+        .value-rankings {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .ranking-section {
+            background: #f8f9fa;
+            border-radius: 15px;
+            padding: 30px;
+            border-left: 5px solid;
+        }
+        
+        .high-value {
+            border-left-color: #28a745;
+        }
+        
+        .medium-value {
+            border-left-color: #ffc107;
+        }
+        
+        .low-value {
+            border-left-color: #dc3545;
+        }
+        
+        .value-item {
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .value-item h5 {
+            color: var(--primary-color);
+            margin-bottom: 8px;
+        }
+        
+        .practical-guide {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
+            color: white;
+        }
+        
+        .guide-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 40px;
+        }
+        
+        .guide-step {
+            background: rgba(255,255,255,0.15);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .step-number {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        
+        .cta-section {
+            padding: 60px 0;
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+        }
+        
+        .btn-white {
+            background: white;
+            color: var(--primary-color);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-white:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .methodology-hero h1 {
+                font-size: 2em;
+            }
+            
+            .matrix-intro h2 {
+                font-size: 2em;
+            }
+            
+            .dimension-grid,
+            .framework-grid,
+            .problem-cards,
+            .value-rankings,
+            .guide-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="top-nav">
+        <div class="container">
+            <a href="index.html" class="logo">WebBuild</a>
+            <div class="nav-links">
+                <a href="index.html#deployment">网站部署</a>
+                <a href="index.html#basics">基础学习</a>
+                <a href="index.html#advanced">进阶提升</a>
+                <a href="task-management.html">任务管理</a>
+                <a href="project-history.html">项目历史</a>
+                <a href="git-commands.html">Git命令</a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="methodology-hero">
+        <div class="container">
+            <h1><i class="fas fa-brain"></i> 需求分析方法论</h1>
+            <p>基于商业价值导向的系统化需求分析框架，帮助您精准识别高价值需求并制定相应的产品策略</p>
+        </div>
+    </section>
+
+    <!-- Framework Overview -->
+    <section class="framework-overview">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px;">核心分析框架</h2>
+            <p style="text-align: center; color: var(--gray-color); margin-bottom: 40px;">
+                本方法论基于目标-行为-约束三角模型，结合商业价值评估，构建了一套完整的需求分析体系
+            </p>
+            
+            <div class="framework-grid">
+                <div class="framework-card">
+                    <h3><i class="fas fa-matrix"></i> 48种需求组合矩阵</h3>
+                    <p>通过6核心目标 × 3约束条件（技术/时间/预算各2档）生成48种需求组合，每种组合都有明确的价值评级和应用场景。</p>
+                    <ul style="margin-top: 15px;">
+                        <li>任务完成型（快速达成结果）</li>
+                        <li>探索学习型（掌握技能）</li>
+                        <li>社交认同型（获得认可）</li>
+                        <li>风险规避型（避免损失）</li>
+                        <li>效率极致型（优化投入产出）</li>
+                        <li>情感满足型（缓解焦虑/获得愉悦）</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3><i class="fas fa-star"></i> 10类问题本质评级</h3>
+                    <p>基于商业价值对常见问题进行星级评级，帮助产品决策者识别最有价值的解决方向。</p>
+                    <ul style="margin-top: 15px;">
+                        <li>⭐️⭐️⭐️⭐️⭐️ 能量消耗问题</li>
+                        <li>⭐️⭐️⭐️⭐️⭐️ 系统冲突问题</li>
+                        <li>⭐️⭐️⭐️⭐️ 信任危机问题</li>
+                        <li>⭐️⭐️⭐️⭐️ 决策瘫痪问题</li>
+                        <li>⭐️⭐️⭐️⭐️ 反馈延迟问题</li>
+                    </ul>
+                </div>
+                
+                <div class="framework-card">
+                    <h3><i class="fas fa-chart-line"></i> 商业价值评估</h3>
+                    <p>建立了完整的价值评估标准，从市场潜力、付费意愿、解决紧迫性三个维度进行综合评价。</p>
+                    <div style="margin-top: 15px;">
+                        <div><span class="stars">⭐️⭐️⭐️⭐️⭐️</span> 高频、强痛点、高付费意愿</div>
+                        <div><span class="stars">⭐️⭐️⭐️⭐️</span> 中高频、明确需求、部分付费</div>
+                        <div><span class="stars">⭐️⭐️⭐️</span> 低频但刚需、免费工具为主</div>
+                    </div>
+                </div>
+                
+                <div class="framework-card">
+                    <h3><i class="fas fa-lightbulb"></i> 实用决策指南</h3>
+                    <p>提供具体的产品开发建议和资源配置策略，确保团队能够快速行动并获得最大投资回报。</p>
+                    <ul style="margin-top: 15px;">
+                        <li>优先攻克⭐️⭐️⭐️⭐️⭐️需求</li>
+                        <li>用免费工具覆盖⭐️⭐️⭐️需求</li>
+                        <li>忽略⭐️⭐️及以下需求</li>
+                        <li>基于用户画像定制化开发</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Tools Navigation -->
+    <section class="tools-navigation" style="padding: 60px 0; background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 20px; color: var(--primary-color);">专业分析工具</h2>
+            <p style="text-align: center; margin-bottom: 40px; color: var(--gray-color);">
+                三个专门的分析工具，帮助您深入理解和应用需求分析方法论
+            </p>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 30px;">
+                <!-- 工具1：用户分析矩阵 -->
+                <div class="tool-card" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-table" style="font-size: 2em; color: white;"></i>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">用户分析矩阵工具</h3>
+                        <p style="color: var(--gray-color); margin-bottom: 20px;">完整的48种需求组合矩阵，涵盖6核心目标 × 8种约束条件</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">🎯 适用场景</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>产品需求调研阶段</li>
+                            <li>用户画像分析</li>
+                            <li>功能优先级排序</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">💡 核心功能</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>6种核心目标详细分析</li>
+                            <li>价值等级星级评价</li>
+                            <li>具体应用场景示例</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="user-analysis-matrix.html" class="btn" style="width: 100%; text-align: center; background: var(--primary-color); color: white; text-decoration: none; padding: 12px; border-radius: 8px; display: block;">开始使用</a>
+                </div>
+                
+                <!-- 工具2：问题本质评级系统 -->
+                <div class="tool-card" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-search-plus" style="font-size: 2em; color: white;"></i>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">问题本质评级系统</h3>
+                        <p style="color: var(--gray-color); margin-bottom: 20px;">10类问题本质的深度分析和商业价值评级</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">🎯 适用场景</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>问题根因分析</li>
+                            <li>解决方案设计</li>
+                            <li>投资决策评估</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">💡 核心功能</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>10类问题深度剖析</li>
+                            <li>商业价值星级评级</li>
+                            <li>成功案例参考</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="problem-essence-analysis.html" class="btn" style="width: 100%; text-align: center; background: var(--primary-color); color: white; text-decoration: none; padding: 12px; border-radius: 8px; display: block;">开始使用</a>
+                </div>
+                
+                <!-- 工具3：商业价值评估指南 -->
+                <div class="tool-card" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-chart-line" style="font-size: 2em; color: white;"></i>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">商业价值评估指南</h3>
+                        <p style="color: var(--gray-color); margin-bottom: 20px;">商业价值评估方法论和实践应用指南</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">🎯 适用场景</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>商业模式设计</li>
+                            <li>ROI投资回报分析</li>
+                            <li>产品策略制定</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">💡 核心功能</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>价值评估框架</li>
+                            <li>实用决策工具</li>
+                            <li>5步实践指南</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="business-value-assessment.html" class="btn" style="width: 100%; text-align: center; background: var(--primary-color); color: white; text-decoration: none; padding: 12px; border-radius: 8px; display: block;">开始使用</a>
+                </div>
+                
+                <!-- 工具4：理论框架深层解析 -->
+                <div class="tool-card" style="background: white; border-radius: 15px; padding: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); transition: transform 0.3s ease;">
+                    <div style="text-align: center; margin-bottom: 20px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #a29bfe 0%, #6c5ce7 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                            <i class="fas fa-brain" style="font-size: 2em; color: white;"></i>
+                        </div>
+                        <h3 style="color: var(--primary-color); margin-bottom: 10px;">理论框架深层解析</h3>
+                        <p style="color: var(--gray-color); margin-bottom: 20px;">基于认知心理学和行为经济学的科学理论框架</p>
+                    </div>
+                    
+                    <div style="margin-bottom: 20px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">🎯 适用场景</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>深度用户研究</li>
+                            <li>产品理论建构</li>
+                            <li>团队培训指导</li>
+                        </ul>
+                    </div>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <h5 style="color: #333; margin-bottom: 10px;">💡 核心功能</h5>
+                        <ul style="color: var(--gray-color); padding-left: 20px;">
+                            <li>用户分类底层逻辑</li>
+                            <li>问题本质科学分析</li>
+                            <li>推导方法论指南</li>
+                        </ul>
+                    </div>
+                    
+                    <a href="deep-analysis-theory.html" class="btn" style="width: 100%; text-align: center; background: var(--primary-color); color: white; text-decoration: none; padding: 12px; border-radius: 8px; display: block;">开始使用</a>
+                </div>
+            </div>
+            
+            <!-- 使用建议 -->
+            <div style="margin-top: 50px; padding: 30px; background: rgba(52, 152, 219, 0.1); border-radius: 15px; text-align: center;">
+                <h4 style="color: var(--primary-color); margin-bottom: 15px;">🚀 新手使用建议</h4>
+                <p style="color: var(--gray-color); margin-bottom: 15px;">
+                    <strong>第1步：</strong>使用「用户分析矩阵工具」识别目标用户群体和需求场景
+                </p>
+                <p style="color: var(--gray-color); margin-bottom: 15px;">
+                    <strong>第2步：</strong>通过「问题本质评级系统」深入分析用户痛点
+                </p>
+                <p style="color: var(--gray-color); margin-bottom: 15px;">
+                    <strong>第3步：</strong>运用「商业价值评估指南」制定产品策略和商业模式
+                </p>
+                <p style="color: var(--gray-color);">
+                    <strong>第4步：</strong>深入学习「理论框架深层解析」理解方法论的科学基础
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Method Summary -->
+    <section style="padding: 60px 0; background: #f8f9fa;">
+        <div class="container">
+            <h2 style="text-align: center; margin-bottom: 40px; color: var(--primary-color);">方法论实践总结</h2>
+            
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px;">
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-table" style="font-size: 1.5em; color: white;"></i>
+                    </div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 15px;">48种需求组合分析</h4>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        基于6核心目标×8种约束条件的完整矩阵，为每种需求场景提供精准的价值评级和解决方案
+                    </p>
+                    <a href="user-analysis-matrix.html" class="btn" style="background: #667eea; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px;">查看详细矩阵</a>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-search-plus" style="font-size: 1.5em; color: white;"></i>
+                    </div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 15px;">10类问题本质评级</h4>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        从获取信息到安全保障，深度分析10类核心问题本质，并给出⭐️-⭐️⭐️⭐️⭐️⭐️商业价值评级
+                    </p>
+                    <a href="problem-essence-analysis.html" class="btn" style="background: #ff9a9e; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px;">查看评级系统</a>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-chart-line" style="font-size: 1.5em; color: white;"></i>
+                    </div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 15px;">商业价值评估指南</h4>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        5步实践指南，从需求识别到策略制定，建立科学的商业价值评估体系
+                    </p>
+                    <a href="business-value-assessment.html" class="btn" style="background: #74b9ff; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px;">查看评估指南</a>
+                </div>
+                
+                <div style="background: white; padding: 30px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.1); text-align: center;">
+                    <div style="width: 60px; height: 60px; background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px;">
+                        <i class="fas fa-lightbulb" style="font-size: 1.5em; color: white;"></i>
+                    </div>
+                    <h4 style="color: var(--primary-color); margin-bottom: 15px;">思维炼金术案例</h4>
+                    <p style="color: var(--gray-color); margin-bottom: 20px;">
+                        从文石高亮单一需求出发，演示如何通过三阶抽象法衍生出300+有效需求的完整推导过程
+                    </p>
+                    <a href="demand-derivation-case.html" class="btn" style="background: #fd79a8; color: white; text-decoration: none; padding: 10px 20px; border-radius: 8px;">学习推导方法</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2>开始应用需求分析方法论</h2>
+            <p style="margin-bottom: 30px;">将理论转化为实践，打造有价值的产品</p>
+            <div style="text-align: center;">
+                <a href="user-analysis-matrix.html" class="btn-white" style="margin: 0 10px 10px 0;">开始需求分析</a>
+                <a href="index.html" class="btn-white" style="margin: 0 10px 10px 0;">返回主页</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>Copyright © 2025 - All right reserved by <a href="https://bento.me/etfminifatter" target="_blank">ETF迷你小富胖子</a> | <a href="https://github.com/etfminifatter/buildsiteguide" target="_blank"><i class="fab fa-github"></i> 项目仓库</a></p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
